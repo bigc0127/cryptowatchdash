@@ -1,7 +1,7 @@
 # cryptowatchdash
 small project to track Crypto investments without connecting to any wallet
 
-##Instructions
+# Instructions
 git clone 
 open cryptodata.txt
 fill out form
