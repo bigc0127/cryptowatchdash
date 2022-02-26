@@ -493,76 +493,95 @@ else
 end
 end
 def btctrending
-  if $pricebtc_f >= $oldpricebtc
+  if $pricebtc_f > $oldpricebtc
     puts "BTC trending up #{$btcpchange_r}%".colorize(:green).on_black.blink
+  elsif $pricebtc_f = $oldpricebtc
+    puts "BTC Price has not changed"
   else
     puts "BTC trending down #{$btcpchange_r}%".colorize(:red).on_black.blink
   end
 end
 
 def bchtrending
-  if $pricebch_f >= $oldpricebch
+  if $pricebch_f > $oldpricebch
     puts "BCH trending up #{$bchpchange_r}%".colorize(:green).on_black.blink
+  elsif $pricebch_f = $oldpricebch
+    puts "BCH price has not chnaged"
   else
     puts "BCH trending down #{$bchpchange_r}%".colorize(:red).on_black.blink
   end
 end
 
 def ltctrending
-  if $priceltc_f >= $oldpriceltc
+  if $priceltc_f > $oldpriceltc
     puts "LTC trending up #{$ltcpchange_r}%".colorize(:green).on_black.blink
+  elsif $priceltc_f = $oldpriceltc
+    puts "LTC price has not changed"
   else
     puts "LTC trending down #{$ltcpchange_r}%".colorize(:red).on_black.blink
   end
 end
 
 def dogetrending
-  if $pricedoge_f >= $oldpricedoge
+  if $pricedoge_f > $oldpricedoge
     puts "DOGE trending up #{$dogepchange_r}%".colorize(:green).on_black.blink
+  elsif $pricedoge_f = $oldpricedoge
+    puts "DOGE price has not changed"
   else
     puts "DOGE trending down #{$dogepchange_r}%".colorize(:red).on_black.blink
   end
 end
 
 def ethtrending
-  if $priceeth_f >= $oldpriceeth
+  if $priceeth_f > $oldpriceeth
     puts "ETH trending up #{$ethpchange_r}%".colorize(:green).on_black.blink
+  elsif $priceeth_f = $oldpriceeth
+    puts "ETH price has not changed"
   else
     puts "ETH trending down #{$ethpchange_r}%".colorize(:red).on_black.blink
   end
 end
 def battrending
-  if $pricebat_f >= $oldpricebat
+  if $pricebat_f > $oldpricebat
     puts "BAT trending up #{$batpchange_r}%".colorize(:green).on_black.blink
+  elsif $pricebat_f = $oldpricebat
+    puts "BAT price has not changed"
   else
     puts "BAT trending down #{$batpchange_r}%".colorize(:red).on_black.blink
   end
 end
 def soltrending
-  if $pricesol_f >= $oldpricesol
+  if $pricesol_f > $oldpricesol
     puts "SOL trending up #{$solpchange_r}%".colorize(:green).on_black.blink
+  elsif $pricesol_f = $oldpricesol
+    puts "SOL price has not changed"
   else
     puts "SOL trending down #{$solpchange_r}%".colorize(:red).on_black.blink
   end
 end
 def adatrending
-  if $priceada_f >= $oldpriceada
+  if $priceada_f > $oldpriceada
     puts "ADA trending up #{$adapchange_r}%".colorize(:green).on_black.blink
+  elsif $priceada_f = $oldpriceada
+    puts "ADA price has not changed"
   else
     puts "ADA trending down #{$adapchange_r}%".colorize(:red).on_black.blink
   end
 end
 def lrctrending
-  if $pricelrc_f >= $oldpricelrc
+  if $pricelrc_f > $oldpricelrc
     puts "LRC trending up #{$lrcpchange_r}%".colorize(:green).on_black.blink
+  elsif $pricelrc_f = $oldpricelrc
+    puts "LRC price has not changed"
   else
     puts "LRC trending down #{$lrcpchange_r}%".colorize(:red).on_black.blink
   end
 end
 def xlmtrending
-  if $pricexlm_f >= $oldpricexlm
+  if $pricexlm_f > $oldpricexlm
     puts "XLM trending up #{$xlmpchange_r}%".colorize(:green).on_black.blink
-
+  elsif $pricexlm_f = $oldpricexlm
+    puts "XLM price has not changed"
   else
     puts "XLM trending down #{$xlmpchange_r}%".colorize(:red).on_black.blink
   end
