@@ -289,7 +289,7 @@ def basicoutput
   system "clear"
   puts "###### Crypto Watch Dashboard Lite ######"
   puts "###### By Connor W. Needling ######"
-  puts "###### Version #{$version}######"
+  puts "###### Version #{$version.chomp} ######"
   if $ownbtc.to_f > 0
   print "spent "
   print "$#{$spentbtc.to_s}".colorize(:black).on_green
