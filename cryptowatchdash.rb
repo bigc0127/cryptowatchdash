@@ -285,11 +285,12 @@ def prices
       $precentage = $precentage.round(2)
       $serialized_array = Marshal.dump($cryptopricedata)
 end
+$version = %x[cat ./installed-version]
 def basicoutput
   system "clear"
-  puts "###### #{$dataset} ######"
+  puts "###### Crypto Watch Dashboard ######"
   puts "###### By Connor W. Needling ######"
-  puts "###### Version 1.7.7.6 (Indinapolis, IN)######"
+  puts "###### Version #{$version}######"
   if $ownbtc.to_f > 0
   print "spent "
   print "$#{$spentbtc.to_s}".colorize(:black).on_green
@@ -506,7 +507,7 @@ def bchtrending
   if $pricebch_f > $oldpricebch
     puts "BCH trending up #{$bchpchange_r}%".colorize(:green).on_black.blink
   elsif $pricebch_f = $oldpricebch
-    puts "BCH price has not changed"
+    puts "BCH price has not chnaged"
   else
     puts "BCH trending down #{$bchpchange_r}%".colorize(:red).on_black.blink
   end
