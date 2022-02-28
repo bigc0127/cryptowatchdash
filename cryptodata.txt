@@ -35,6 +35,6 @@
 ####Type amount of $USD spent on ADA below this line ####
 0.0
 ####Type amount of LRC owned below this line ####
-0
+0.0
 ####Type amount of $USD spent on LRC below this line ####
-0
+0.0
