@@ -8,9 +8,11 @@ puts "online : #{installed.to_s}"
 puts "would you like to update? (y/n)"
 $update = gets.chomp
   if $update == "y"
-    puts "updating cryptowatchdash"
+    puts "updating..."
     system "rm ./cryptowatchdash.rb"
+    system "rm ./cryptopricedashlight.rb"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptowatchdash.rb"
+    system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptowatchdashlight.rb"
     system "rm ./installed-version"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/installed-version"
     version = %x[cat ./version-check]
