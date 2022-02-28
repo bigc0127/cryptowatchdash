@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require 'colorize'
-require 'csv'
 def setup
   $time = 10
   $dataset = "cryptodata.txt"
@@ -285,11 +284,12 @@ def prices
       $precentage = $precentage.round(2)
       $serialized_array = Marshal.dump($cryptopricedata)
 end
+$version = %x[cat ./installed-version]
 def basicoutput
   system "clear"
-  puts "###### #{$dataset} ######"
+  puts "###### Crypto Watch Dashboard Lite ######"
   puts "###### By Connor W. Needling ######"
-  puts "###### Version 1.7.7.6 (Indinapolis, IN)######"
+  puts "###### Version #{$version}######"
   if $ownbtc.to_f > 0
   print "spent "
   print "$#{$spentbtc.to_s}".colorize(:black).on_green
@@ -591,11 +591,6 @@ def trendingclose
     $ltc = time.strftime("%Y-%m-%d-%H:%M:%S")
     puts "Last update #{$ltc}"
     File.open('cryptopricedata.txt', 'w') {|f| f.write($serialized_array) }
-end
-def logging
-  CSV.open("#{$dataset}-logging.csv", "ab") do |csv|
-  csv << ["#{$ltc}","#{$pricebtc_f}","#{$amountbtc_r}","#{$btcpchange_r}","#{$pricebch_f}","#{$amountbch_r}","#{$bchpchange_r}","#{$priceltc_f}","#{$amountltc_r}","#{$ltcpchange_r}","#{$pricedoge_f}","#{$amountdoge_r}","#{$dogepchange_r}","#{$pricexlm_f}","#{$amountxlm_r}","#{$xlmpchange_r}","#{$pricebat_f}","#{$amountbat_r}","#{$batpchange_r}","#{$priceeth_f}","#{$amounteth_r}","#{$ethpchange_r}","#{$pricesol_f}","#{$amountsol_r}","#{$solpchange_r}","#{$priceada_f}","#{$amountada_r}","#{$adapchange_r}","#{$pricelrc_f}","#{$amountlrc_r}","#{$lrcpchange_r}","#{$totalearnins}","#{$precentage}%"]
-end
 end
 $k = 1
 setup
