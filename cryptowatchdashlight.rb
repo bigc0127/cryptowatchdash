@@ -204,7 +204,7 @@ def prices
       $oldmoneylrc = earninslrc
 
       $totalearnins = ($earninsbtc_r + $earninsbch_r + $earninsltc_r + $earninsdoge_r + $earninsxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r).round(2)
-      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r).round(2)
+      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r).round(2)
       $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc)
 
       $precentage = ((($totalvalue - $totalspent) / $totalspent) * 100)
@@ -289,7 +289,7 @@ def basicoutput
   system "clear"
   puts "###### Crypto Watch Dashboard Lite ######"
   puts "###### By Connor W. Needling ######"
-  puts "###### Version #{$version.chomp} ######"
+  puts "###### Version #{$version.chomp}######"
   if $ownbtc.to_f > 0
   print "spent "
   print "$#{$spentbtc.to_s}".colorize(:black).on_green
