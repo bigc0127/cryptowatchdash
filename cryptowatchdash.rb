@@ -507,7 +507,7 @@ def bchtrending
   if $pricebch_f > $oldpricebch
     puts "BCH trending up #{$bchpchange_r}%".colorize(:green).on_black.blink
   elsif $pricebch_f = $oldpricebch
-    puts "BCH price has not chnaged"
+    puts "BCH price has not changed"
   else
     puts "BCH trending down #{$bchpchange_r}%".colorize(:red).on_black.blink
   end
