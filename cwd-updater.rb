@@ -17,6 +17,8 @@ $update = gets.chomp
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/installed-version"
     system "rm ./cwd-updater.rb"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cwd-updater.rb"
+    system "chmod +x ./cwd-updater.rb"
+    system "chmod +x ./cryptowatchdash*"
     version = %x[cat ./version-check]
     installed = %x[cat ./installed-version]
     puts "installed : #{version.to_s}"
