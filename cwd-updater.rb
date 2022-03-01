@@ -21,8 +21,8 @@ $update = gets.chomp
     system "chmod +x ./cryptowatchdash*"
     version = %x[cat ./version-check]
     installed = %x[cat ./installed-version]
-    puts "installed : #{version.to_s}"
-    puts "online : #{installed.to_s}"
+    puts "installed : #{installed.to_s}"
+    puts "online : #{version.to_s}"
     puts "All Done, Goodbye!"
     else
       puts "exiting..."
