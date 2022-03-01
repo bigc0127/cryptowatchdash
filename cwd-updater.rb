@@ -10,11 +10,13 @@ $update = gets.chomp
   if $update == "y"
     puts "updating..."
     system "rm ./cryptowatchdash.rb"
-    system "rm ./cryptopricedashlight.rb"
+    system "rm ./cryptowatchdashlight.rb"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptowatchdash.rb"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptowatchdashlight.rb"
     system "rm ./installed-version"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/installed-version"
+    system "rm ./cwd-updater.rb"
+    system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cwd-updater.rb"
     version = %x[cat ./version-check]
     installed = %x[cat ./installed-version]
     puts "installed : #{version.to_s}"
