@@ -38,3 +38,7 @@
 0.0
 ####Type amount of $USD spent on LRC below this line ####
 0.0
+####Type amount of AMP owned below this line ####
+0.0
+####Type amount of $USD spent on AMP below this line ####
+0.0
