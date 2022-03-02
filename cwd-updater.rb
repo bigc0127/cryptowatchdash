@@ -5,8 +5,8 @@ version = %x[cat ./version-check]
 installed = %x[cat ./installed-version]
 time = Time.new
 $ltc = time.strftime("%Y-%m-%d-%H:%M:%S")
-puts "installed : #{version.to_s}"
-puts "online : #{installed.to_s}"
+puts "installed : #{installed.to_s}"
+puts "online : #{version.to_s}"
 puts "would you like to update? (y/n)"
 $update = gets.chomp
   if $update == "y"
