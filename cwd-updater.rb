@@ -3,6 +3,8 @@ system "rm ./version-check"
 system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/version-check"
 version = %x[cat ./version-check]
 installed = %x[cat ./installed-version]
+time = Time.new
+$ltc = time.strftime("%Y-%m-%d-%H:%M:%S")
 puts "installed : #{version.to_s}"
 puts "online : #{installed.to_s}"
 puts "would you like to update? (y/n)"
@@ -19,6 +21,12 @@ $update = gets.chomp
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cwd-updater.rb"
     system "chmod +x ./cwd-updater.rb"
     system "chmod +x ./cryptowatchdash*"
+    system "mkdir ./backup"
+    system "mv ./*.csv ./#{$ltc}-logbackup.csv"
+    system "mv ./*.csv ./backup"
+    system "mv ./cryptodata.txt ./backup"
+    system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptodata.txt"
+    system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptodata.txt-logging.csv"
     version = %x[cat ./version-check]
     installed = %x[cat ./installed-version]
     puts "installed : #{installed.to_s}"
