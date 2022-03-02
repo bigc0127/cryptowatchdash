@@ -7,6 +7,7 @@ i made this program on Fedora 35 with a gnome enviorment. you will need the foll
 3. wget
 4. ruby
 5. colorize (ruby gem)
+6. csv (ruby gem)
 
 if you have the above list then proceed if you dont then look up how to install for your distrobution and then proceed.
 
