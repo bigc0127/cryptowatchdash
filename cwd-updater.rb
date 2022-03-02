@@ -24,7 +24,8 @@ $update = gets.chomp
     system "mkdir ./backup"
     system "mv ./*.csv ./#{$ltc}-logbackup.csv"
     system "mv ./*.csv ./backup"
-    system "mv ./cryptodata.txt ./backup"
+    system "mv ./cryptodata.txt ./#{$ltc}-cryptodata.txt"
+    system "mv ./*-cryptodata.txt ./backup"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptodata.txt"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptodata.txt-logging.csv"
     version = %x[cat ./version-check]
