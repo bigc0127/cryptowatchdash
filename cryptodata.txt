@@ -12,7 +12,7 @@
 0.0
 ####Type amount of DOGE owned below this line####
 0.0
-####Type amount of $USD spent on BAT below this line####
+####Type amount of $USD spent on DOGE below this line####
 0.0
 ####Type amount of XLM owned below this line ####
 0.0
