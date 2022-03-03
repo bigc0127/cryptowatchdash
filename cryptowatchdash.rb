@@ -407,112 +407,156 @@ end
 end
   if $ownbtc.to_f > 0
   print "Current BTC holdings Value: $#{$amountbtc_r} "
-  puts "($#{$earninsbtc_r.to_s})".colorize(:yellow).on_black.underline
+  puts "($#{$earninsbtc_r.to_s})".colorize(:black).on_yellow
 else
 end
 if $ownbch.to_f > 0
   print "Current BCH holdings Value: $#{$amountbch_r} "
-  puts "($#{$earninsbch_r.to_s})".colorize(:blue).on_black.underline
+  puts "($#{$earninsbch_r.to_s})".colorize(:black).on_blue
 else
 end
 if $ownltc.to_f > 0
   print "Current LTC holdings Value: $#{$amountltc_r} "
-  puts "($#{$earninsltc_r.to_s})".colorize(:white).on_black.underline
+  puts "($#{$earninsltc_r.to_s})".colorize(:black).on_white
 else
 end
 if $owndoge.to_f > 0
   print "Current DOGE holdings Value: $#{$amountdoge_r} "
-  puts "($#{$earninsdoge_r.to_s})".colorize(:red).on_black.underline
+  puts "($#{$earninsdoge_r.to_s})".colorize(:black).on_red
 else
 end
 if $ownxlm.to_f > 0
   print "Current XLM holdings Value: $#{$amountxlm_r} "
-  puts "($#{$earninsxlm_r.to_s})".colorize(:green).on_black.underline
+  puts "($#{$earninsxlm_r.to_s})".colorize(:black).on_green
 else
 end
 if $ownbat.to_f > 0
   print "current BAT holdings Value: $#{$amountbat_r} "
-  puts "($#{$earninsbat_r.to_s})".colorize(:cyan).on_black.underline
+  puts "($#{$earninsbat_r.to_s})".colorize(:black).on_cyan
 else
 end
 if $owneth.to_f > 0
   print "Current ETH holdings Value: $#{$amounteth_r} "
-  puts "($#{$earninseth_r.to_s})".colorize(:magenta).on_black.underline
+  puts "($#{$earninseth_r.to_s})".colorize(:black).on_magenta
 else
 end
 if $ownsol.to_f > 0
   print "Current SOL holdings Value: $#{$amountsol_r} "
-  puts "($#{$earninssol_r.to_s})".colorize(:light_yellow).on_black.underline
+  puts "($#{$earninssol_r.to_s})".colorize(:black).on_light_yellow.
 else
 end
 if $ownada.to_f > 0
   print "current ADA holdings Value: $#{$amountada_r} "
-  puts "($#{$earninsada_r.to_s})".colorize(:light_blue).on_black.underline
+  puts "($#{$earninsada_r.to_s})".colorize(:black).on_light_blue
 else
 end
 if $ownlrc.to_f > 0
   print "current LRC holdings Value: $#{$amountlrc_r} "
-  puts "($#{$earninslrc_r.to_s})".colorize(:light_magenta).on_black.underline
+  puts "($#{$earninslrc_r.to_s})".colorize(:black).on_light_magenta
 else
 end
 if $ownamp.to_f > 0
   print "current AMP holdings Value: $#{$amountamp_r} "
-  puts "($#{$earninsamp_r.to_s})".colorize(:light_red).on_black.underline
+  puts "($#{$earninsamp_r.to_s})".colorize(:black).on_light_red
 else
 end
   if $ownbtc.to_f > 0
   print "Current $BTC: $#{$pricebtc_r} ".yellow
+  if $pricebtc_r >= $breakevenbtc_r
+  puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownbch.to_f > 0
   print "Current $BCH: $#{$pricebch_r} ".blue
+  if $pricebch_r >= $breakevenbch_r
+  puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownltc.to_f > 0
   print "Current $LTC: $#{$priceltc_r} ".white
+  if $priceltc_r >= $breakevenltc_r
+  puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $owndoge.to_f > 0
   print "Current $DOGE: $#{$pricedoge_r} ".red
+  if $pricedoge_r >= $breakevendoge_r
+  puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownxlm.to_f > 0
   print "Current $XLM: $#{$pricexlm_r} ".green
+  if $pricexlm_r >= $breakevenxlm_r
+  puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownbat.to_f > 0
   print "Current $BAT: $#{$pricebat_r} ".cyan
+  if $pricebat_r >= $breakevenbat_r
+  puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $owneth.to_f > 0
   print "Current $ETH: $#{$priceeth_r} ".magenta
+  if $priceeth_r >= $breakeveneth_r
+  puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownsol.to_f > 0
   print "Current $SOL: $#{$pricesol_r} ".light_yellow
+  if $pricesol_r >= $breakevensol_r
+  puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownada.to_f > 0
   print "Current $ADA: $#{$priceada_r} ".light_blue
+  if $priceada_r >= $breakevenada_r
+  puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownlrc.to_f > 0
   print "Current $LRC: $#{$pricelrc_r} ".light_magenta
+  if $pricelrc_r >= $breakevenlrc_r
+  puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_red.underline
+end
 else
 end
 if $ownamp.to_f > 0
   print "Current $AMP: $#{$priceamp_r} ".light_red
+  if $priceamp_r >= $breakevenamp_r
+  puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_green.underline
+else
   puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_red.underline
+end
 else
 end
 end
