@@ -29,6 +29,8 @@ $update = gets.chomp
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptodata.txt"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/cryptodata.txt-logging.csv"
     system "gedit ./cryptodata.txt ./backup/#{$ltc}-cryptodata.txt"
+    system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/changelog.txt"
+    system "cat ./changelog.txt"
     version = %x[cat ./version-check]
     installed = %x[cat ./installed-version]
     puts "installed : #{installed.to_s}"
