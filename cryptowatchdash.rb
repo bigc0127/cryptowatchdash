@@ -84,16 +84,16 @@ def setup
   $cryptopricedata = Array.new(10)
 end
 def prices
-      pricebtc = %x[curl -s https://api.coinbase.com/v2/prices/btc-usd/spot | awk -F '"' '{print $14}']
-      pricebch = %x[curl -s https://api.coinbase.com/v2/prices/bch-usd/spot | awk -F '"' '{print $14}']
-      priceltc = %x[curl -s https://api.coinbase.com/v2/prices/ltc-usd/spot | awk -F '"' '{print $14}']
-      pricedoge = %x[curl -s https://api.coinbase.com/v2/prices/doge-usd/spot | awk -F '"' '{print $14}']
-      pricexlm = %x[curl -s https://api.coinbase.com/v2/prices/xlm-usd/spot | awk -F '"' '{print $14}']
-      pricebat = %x[curl -s https://api.coinbase.com/v2/prices/bat-usd/spot | awk -F '"' '{print $14}']
-      priceeth = %x[curl -s https://api.coinbase.com/v2/prices/eth-usd/spot | awk -F '"' '{print $14}']
-      pricesol = %x[curl -s https://api.coinbase.com/v2/prices/sol-usd/spot | awk -F '"' '{print $14}']
-      priceada = %x[curl -s https://api.coinbase.com/v2/prices/ada-usd/spot | awk -F '"' '{print $14}']
-      pricelrc = %x[curl -s https://api.coinbase.com/v2/prices/lrc-usd/spot | awk -F '"' '{print $14}']
+      pricebtc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBTCUSD | awk -F "," '{print $7}']
+      pricebch = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBCHN:USD | awk -F "," '{print $7}']
+      priceltc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLTCUSD | awk -F "," '{print $7}']
+      pricedoge = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tDOGE:USD | awk -F "," '{print $7}']
+      pricexlm = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tXLMUSD | awk -F "," '{print $7}']
+      pricebat = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBATUSD | awk -F "," '{print $7}']
+      priceeth = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tETHUSD | awk -F "," '{print $7}']
+      pricesol = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tSOLUSD | awk -F "," '{print $7}']
+      priceada = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tADAUSD | awk -F "," '{print $7}']
+      pricelrc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLRCUSD | awk -F "," '{print $7}']
       priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-usd/spot | awk -F '"' '{print $14}']
 
       $pricebtc_f = pricebtc.to_f
@@ -111,14 +111,14 @@ def prices
       $pricebtc_r = $pricebtc_f.round(3)
       $pricebch_r = $pricebch_f.round(3)
       $priceltc_r = $priceltc_f.round(3)
-      $pricedoge_r = $pricedoge_f.round(3)
+      $pricedoge_r = $pricedoge_f.round(4)
       $pricexlm_r = $pricexlm_f.round(3)
       $pricebat_r = $pricebat_f.round(3)
       $priceeth_r = $priceeth_f.round(3)
       $pricesol_r = $pricesol_f.round(3)
       $priceada_r = $priceada_f.round(3)
       $pricelrc_r = $pricelrc_f.round(3)
-      $priceamp_r = $priceamp_f.round(3)
+      $priceamp_r = $priceamp_f.round(4)
 
       amountbtc = $ownbtc * $pricebtc_f
       amountbch = $ownbch * $pricebch_f
@@ -159,14 +159,14 @@ def prices
       $breakevenbtc_r = breakevenbtc.round(2)
       $breakevenbch_r = breakevenbch.round(2)
       $breakevenltc_r = breakevenltc.round(2)
-      $breakevendoge_r = breakevendoge.round(2)
+      $breakevendoge_r = breakevendoge.round(3)
       $breakevenxlm_r = breakevenxlm.round(2)
       $breakevenbat_r = breakevenbat.round(2)
       $breakeveneth_r = breakeveneth.round(2)
       $breakevensol_r = breakevensol.round(2)
       $breakevenada_r = breakevenada.round(2)
       $breakevenlrc_r = breakevenlrc.round(2)
-      $breakevenamp_r = breakevenamp.round(2)
+      $breakevenamp_r = breakevenamp.round(3)
 
       earninsbtc = (($spentbtc - amountbtc) * -1)
       changebtc = ($oldmoneybtc - earninsbtc)
@@ -316,7 +316,7 @@ def basicoutput
   system "clear"
   puts "###### Crypto Watch Dashboard ######"
   puts "###### By Connor W. Needling ######"
-  puts "###### Version #{$version.chomp}######"
+  puts "###### Version #{$version.chomp} ######"
   if $ownbtc.to_f > 0
   print "spent "
   print "$#{$spentbtc.to_s}".colorize(:black).on_green
