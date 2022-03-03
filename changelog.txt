@@ -1,0 +1,12 @@
+Welcome to Version 15!
+
+new in this version is i have added color coding to the break even.
+this allows for easier glance understanding of what is at or above break even point.
+
+Going Forward if Break-Even is green then it's at or above Break-Even (making money)
+if Break even is Red then it is below Break-Even.
+
+I have also changed the layout a little to better highlight gains and losses by currency
+
+that's all Enjoy!
+- Connor
