@@ -464,6 +464,8 @@ end
   print "Current $BTC: $#{$pricebtc_r} ".yellow
   if $pricebtc_r >= $breakevenbtc_r
   puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_green.underline
+elsif $pricebtc_r == $breakevenbtc_r
+  puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_red.underline
 end
@@ -473,6 +475,8 @@ if $ownbch.to_f > 0
   print "Current $BCH: $#{$pricebch_r} ".blue
   if $pricebch_r >= $breakevenbch_r
   puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_green.underline
+elsif $pricebch_r == $breakevenbch_r
+  puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_red.underline
 end
@@ -482,6 +486,8 @@ if $ownltc.to_f > 0
   print "Current $LTC: $#{$priceltc_r} ".white
   if $priceltc_r >= $breakevenltc_r
   puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_green.underline
+elsif $priceltc_r == $breakevenltc_r
+  puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_red.underline
 end
@@ -491,6 +497,8 @@ if $owndoge.to_f > 0
   print "Current $DOGE: $#{$pricedoge_r} ".red
   if $pricedoge_r >= $breakevendoge_r
   puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_green.underline
+elsif $pricedoge_r == $breakevendoge_r
+  puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_red.underline
 end
@@ -500,6 +508,8 @@ if $ownxlm.to_f > 0
   print "Current $XLM: $#{$pricexlm_r} ".green
   if $pricexlm_r >= $breakevenxlm_r
   puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_green.underline
+elsif $pricexlm_r == $breakevenxlm_r
+  puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_red.underline
 end
@@ -509,6 +519,8 @@ if $ownbat.to_f > 0
   print "Current $BAT: $#{$pricebat_r} ".cyan
   if $pricebat_r >= $breakevenbat_r
   puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_green.underline
+elsif $pricebat_r == $breakevenbat_r
+    puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_red.underline
 end
@@ -518,6 +530,8 @@ if $owneth.to_f > 0
   print "Current $ETH: $#{$priceeth_r} ".magenta
   if $priceeth_r >= $breakeveneth_r
   puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_green.underline
+elsif $priceeth_r == $breakeveneth_r
+  puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_red.underline
 end
@@ -527,6 +541,8 @@ if $ownsol.to_f > 0
   print "Current $SOL: $#{$pricesol_r} ".light_yellow
   if $pricesol_r >= $breakevensol_r
   puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_green.underline
+elsif $pricesol_r == $breakevensol_r
+  puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_red.underline
 end
@@ -536,6 +552,8 @@ if $ownada.to_f > 0
   print "Current $ADA: $#{$priceada_r} ".light_blue
   if $priceada_r >= $breakevenada_r
   puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_green.underline
+elsif $priceada_r == $breakevenada_r
+  puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_red.underline
 end
@@ -545,6 +563,8 @@ if $ownlrc.to_f > 0
   print "Current $LRC: $#{$pricelrc_r} ".light_magenta
   if $pricelrc_r >= $breakevenlrc_r
   puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_green.underline
+elsif $pricelrc_r == $breakevenlrc_r
+  puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_red.underline
 end
@@ -554,6 +574,8 @@ if $ownamp.to_f > 0
   print "Current $AMP: $#{$priceamp_r} ".light_red
   if $priceamp_r >= $breakevenamp_r
   puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_green.underline
+elsif $priceamp_r == $breakevenamp_r
+  puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_yellow.underline
 else
   puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_red.underline
 end
