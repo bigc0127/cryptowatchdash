@@ -496,7 +496,7 @@ else
 end
 if $ownskl.to_f > 0
   print "current SKL holdings Value: $#{$amountskl_r} "
-  puts "$#{$earninsskl_r.to_s})".colorize(:black).on_light_green
+  puts "($#{$earninsskl_r.to_s})".colorize(:black).on_light_green
 else
 end
   if $ownbtc.to_f > 0
