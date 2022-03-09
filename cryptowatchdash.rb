@@ -81,7 +81,14 @@ def setup
   spentampraw = file_data[43]
   $spentamp = spentampraw.to_f
 
-  $cryptopricedata = Array.new(10)
+  ownsklraw = file_data[45]
+  $ownskl = ownsklraw.to_f
+  $oldpriceskl = 1
+  $oldmoneyskl = 0
+  spentsklraw = file_data[47]
+  $spentskl = spentsklraw.to_f
+
+  $cryptopricedata = Array.new(11)
 end
 def prices
       pricebtc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBTCUSD | awk -F "," '{print $7}']
@@ -95,6 +102,7 @@ def prices
       priceada = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tADAUSD | awk -F "," '{print $7}']
       pricelrc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLRCUSD | awk -F "," '{print $7}']
       priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-usd/spot | awk -F '"' '{print $14}']
+      priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-usd/spot | awk -F '"' '{print $14}']
 
       $pricebtc_f = pricebtc.to_f
       $pricebch_f = pricebch.to_f
@@ -107,6 +115,7 @@ def prices
       $priceada_f = priceada.to_f
       $pricelrc_f = pricelrc.to_f
       $priceamp_f = priceamp.to_f
+      $priceskl_f = priceskl.to_f
 
       $pricebtc_r = $pricebtc_f.round(3)
       $pricebch_r = $pricebch_f.round(3)
@@ -119,6 +128,7 @@ def prices
       $priceada_r = $priceada_f.round(3)
       $pricelrc_r = $pricelrc_f.round(3)
       $priceamp_r = $priceamp_f.round(4)
+      $priceskl_r = $priceskl_f.round(4)
 
       amountbtc = $ownbtc * $pricebtc_f
       amountbch = $ownbch * $pricebch_f
@@ -131,6 +141,7 @@ def prices
       amountada = $ownada * $priceada_f
       amountlrc = $ownlrc * $pricelrc_f
       amountamp = $ownamp * $priceamp_f
+      amountskl = $ownskl * $priceskl_f
 
       $amountbtc_r = amountbtc.round(2)
       $amountbch_r = amountbch.round(2)
@@ -143,6 +154,7 @@ def prices
       $amountada_r = amountada.round(2)
       $amountlrc_r = amountlrc.round(2)
       $amountamp_r = amountamp.round(2)
+      $amountskl_r = amountskl.round(2)
 
       breakevenbtc = ($spentbtc / $ownbtc)
       breakevenbch = ($spentbch / $ownbch)
@@ -155,6 +167,7 @@ def prices
       breakevenada = ($spentada / $ownada)
       breakevenlrc = ($spentlrc / $ownlrc)
       breakevenamp = ($spentamp / $ownamp)
+      breakevenskl = ($spentskl / $ownskl)
 
       $breakevenbtc_r = breakevenbtc.round(2)
       $breakevenbch_r = breakevenbch.round(2)
@@ -167,6 +180,7 @@ def prices
       $breakevenada_r = breakevenada.round(2)
       $breakevenlrc_r = breakevenlrc.round(2)
       $breakevenamp_r = breakevenamp.round(3)
+      $breakevenskl_r = breakevenskl.round(3)
 
       earninsbtc = (($spentbtc - amountbtc) * -1)
       changebtc = ($oldmoneybtc - earninsbtc)
@@ -223,9 +237,14 @@ def prices
       $earninsamp_r = earninsamp.round(2)
       $oldmoneyamp = earninsamp
 
-      $totalearnins = ($earninsbtc_r + $earninsbch_r + $earninsltc_r + $earninsdoge_r + $earninsxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r + $earninsamp_r).round(2)
-      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r + $amountamp_r).round(2)
-      $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc + $spentamp)
+      earninsskl = (($spentskl - amountskl) * -1)
+      changeskl = ($oldmoneyskl - earninsskl)
+      $earninsskl_r = earninsskl.round(2)
+      $oldmoneyskl = earninsskl
+
+      $totalearnins = ($earninsbtc_r + $earninsbch_r + $earninsltc_r + $earninsdoge_r + $earninsxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r + $earninsamp_r + $earninsskl_r).round(2)
+      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r + $amountamp_r + $amountskl_r).round(2)
+      $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc + $spentamp + $spentskl)
 
       $precentage = ((($totalvalue - $totalspent) / $totalspent) * 100)
       $cryptopricedata = Marshal.load File.read('cryptopricedata.txt')
@@ -263,6 +282,9 @@ def prices
       $oldpriceamp = $cryptopricedata[10]
       $oldpriceamp = $oldpriceamp.to_f
 
+      $oldpriceskl = $cryptopricedata[11]
+      $oldpriceskl = $oldpriceskl.to_f
+
       btcpchange = ((($pricebtc_f - $oldpricebtc.to_f) / $oldpricebtc.to_f) * 100.0)
       $btcpchange_r = btcpchange.round(2)
 
@@ -296,6 +318,9 @@ def prices
       amppchange = ((($priceamp_f - $oldpriceamp.to_f) / $oldpriceamp.to_f) * 100.0)
       $amppchange_r = amppchange.round(2)
 
+      sklpchange = ((($priceskl_f - $oldpriceskl.to_f) / $oldpriceskl.to_f) * 100.0)
+      $sklpchange_r = sklpchange.round(2)
+
       $cryptopricedata[0] = "#{$pricebtc_f}"
       $cryptopricedata[1] = "#{$pricebch_f}"
       $cryptopricedata[2] = "#{$priceltc_f}"
@@ -307,6 +332,7 @@ def prices
       $cryptopricedata[8] = "#{$priceada_f}"
       $cryptopricedata[9] = "#{$pricelrc_f}"
       $cryptopricedata[10] = "#{$priceamp_f}"
+      $cryptopricedata[11] = "#{$priceskl_f}"
 
       $precentage = $precentage.round(2)
       $serialized_array = Marshal.dump($cryptopricedata)
@@ -405,6 +431,14 @@ end
     puts " AMP"
   else
 end
+  if $ownskl.to_f > 0
+    print "spent "
+    print "$#{$spentskl.to_s}".colorize(:black).on_green
+    print " on "
+    print "#{$ownskl.to_s}".colorize(:black).on_yellow
+    puts " SKL"
+  else
+end
   if $ownbtc.to_f > 0
   print "Current BTC holdings Value: $#{$amountbtc_r} "
   puts "($#{$earninsbtc_r.to_s})".colorize(:black).on_yellow
@@ -458,6 +492,11 @@ end
 if $ownamp.to_f > 0
   print "current AMP holdings Value: $#{$amountamp_r} "
   puts "($#{$earninsamp_r.to_s})".colorize(:black).on_light_red
+else
+end
+if $ownskl.to_f > 0
+  print "current SKL holdings Value: $#{$amountskl_r} "
+  puts "$#{$earninsskl_r.to_s})".colorize(:black).on_light_green
 else
 end
   if $ownbtc.to_f > 0
@@ -579,6 +618,17 @@ elsif $priceamp_r == $breakevenamp_r
 else
   puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_red.underline
 end
+else
+end
+if $ownskl.to_f > 0
+  print "Current $SKL $#{$priceskl_r} ".light_green
+  if $priceskl_r >= $breakevenskl_r
+    puts "Break-Even SKL: $#{$breakevenskl_r}".colorize(:black).on_green.underline
+  elsif $priceskl_r == $breakevenskl_r
+    puts "Break-Even SKL: $#{$breakevenskl_r}".colorize(:black).on_yellow.underline
+  else
+    puts "Break-Even SKL: $#{$breakevenskl_r}".colorize(:black).on_red.underline
+  end
 else
 end
 end
@@ -706,6 +756,15 @@ def amptrending
     puts "AMP price has not changed"
   end
 end
+def skltrending
+  if $priceskl_f > $oldpriceskl
+    puts "SKL trending up #{$sklpchange_r}%".colorize(:green).on_black.blink
+  elsif $priceskl_f < $oldpriceskl
+    puts "SKL trending down #{$sklpchange_r}%".colorize(:red).on_black.blink
+  else
+    puts "SKL price has not changed"
+  end
+end
 def trendingclose
     time = Time.new
     $ltc = time.strftime("%Y-%m-%d-%H:%M:%S")
@@ -714,7 +773,7 @@ def trendingclose
 end
 def logging
   CSV.open("#{$dataset}-logging.csv", "ab") do |csv|
-  csv << ["#{$ltc}","#{$pricebtc_f}","#{$amountbtc_r}","#{$btcpchange_r}","#{$pricebch_f}","#{$amountbch_r}","#{$bchpchange_r}","#{$priceltc_f}","#{$amountltc_r}","#{$ltcpchange_r}","#{$pricedoge_f}","#{$amountdoge_r}","#{$dogepchange_r}","#{$pricexlm_f}","#{$amountxlm_r}","#{$xlmpchange_r}","#{$pricebat_f}","#{$amountbat_r}","#{$batpchange_r}","#{$priceeth_f}","#{$amounteth_r}","#{$ethpchange_r}","#{$pricesol_f}","#{$amountsol_r}","#{$solpchange_r}","#{$priceada_f}","#{$amountada_r}","#{$adapchange_r}","#{$pricelrc_f}","#{$amountlrc_r}","#{$lrcpchange_r}","#{$priceamp_f}","#{$amountamp_r}","#{$amppchange_r}","#{$totalearnins}","#{$precentage}%"]
+  csv << ["#{$ltc}","#{$pricebtc_f}","#{$amountbtc_r}","#{$btcpchange_r}","#{$pricebch_f}","#{$amountbch_r}","#{$bchpchange_r}","#{$priceltc_f}","#{$amountltc_r}","#{$ltcpchange_r}","#{$pricedoge_f}","#{$amountdoge_r}","#{$dogepchange_r}","#{$pricexlm_f}","#{$amountxlm_r}","#{$xlmpchange_r}","#{$pricebat_f}","#{$amountbat_r}","#{$batpchange_r}","#{$priceeth_f}","#{$amounteth_r}","#{$ethpchange_r}","#{$pricesol_f}","#{$amountsol_r}","#{$solpchange_r}","#{$priceada_f}","#{$amountada_r}","#{$adapchange_r}","#{$pricelrc_f}","#{$amountlrc_r}","#{$lrcpchange_r}","#{$priceamp_f}","#{$amountamp_r}","#{$amppchange_r}","#{$priceskl_f}","#{$amountskl_r}","#{$sklpchange_r}","#{$totalearnins}","#{$precentage}%"]
 end
 end
 $k = 1
@@ -768,6 +827,10 @@ else
 end
 if $ownamp.to_f > 0
   amptrending
+else
+end
+if $ownskl.to_f > 0
+  skltrending
 else
 end
 trendingclose

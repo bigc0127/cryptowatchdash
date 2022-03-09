@@ -42,3 +42,7 @@
 0.0
 ####Type amount of $USD spent on AMP below this line ####
 0.0
+####Type amount of SKL owned below this line ####
+0.0
+####Type amount of $USD spent on SKL below this line ####
+0.0

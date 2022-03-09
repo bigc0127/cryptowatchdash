@@ -1,13 +1,10 @@
-Welcome to Version 15.1 !
+Welcome to Version 15.2 !
 
-New in this version is I have added color coding to the break even.
-this allows for easier glance understanding of what is at or above or below break even point.
+New in this version i have added support for SKL. I have also gone back to bitfindex as the main API i use for prices as coinbase API  is not 100% stable. As of now only AMP and SKL use the coinbase API.
 
-Going Forward if Break-Even is green then it's above Break-Even (making money)
-if Break-Even is Yellow then it is at Break-Even (no loss or gain)
-if Break-Even is Red then it is below Break-Even (loss money).
+Other than that this is a minor update, Enjoy your day!
 
-I have also changed the layout a little to better highlight gains and losses by currency
+#WWG1WGA #MAGA #1776
 
-that's all Enjoy!
-- Connor
+Take Care,
+ - Connor
