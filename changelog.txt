@@ -1,6 +1,6 @@
-Welcome to Version 15.2 !
+Welcome to Version 15.2.1 !
 
-New in this version i have added support for SKL. I have also gone back to bitfindex as the main API i use for prices as coinbase API  is not 100% stable. As of now only AMP and SKL use the coinbase API.
+New in this version i have added support for SKL. I have also gone back to bitfindex as the main API i use for prices as coinbase API  is not 100% stable. As of now only AMP and SKL use the coinbase API. I also have changed the cwd-updated to update price database so first run is more accurate and clean.
 
 Other than that this is a minor update, Enjoy your day!
 
