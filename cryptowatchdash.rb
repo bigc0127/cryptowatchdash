@@ -476,7 +476,7 @@ else
 end
 if $ownsol.to_f > 0
   print "Current SOL holdings Value: $#{$amountsol_r} "
-  puts "($#{$earninssol_r.to_s})".colorize(:black).on_light_yellow.
+  puts "($#{$earninssol_r.to_s})".colorize(:black).on_light_yellow
 else
 end
 if $ownada.to_f > 0
