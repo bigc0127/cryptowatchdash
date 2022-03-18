@@ -1,8 +1,10 @@
-Welcome to Version 15.2.2 !
+Welcome to Version 16.0!
 
-New in this version I have removed a random "." on line 480 of the code that was causing things to crash and go crazy when the amount of SOL owned is grater than 1
+new in this version is notifications which are turnd on at first run. this was a huge update and as such it does now how a new dependance which you will have to install before running CWD. 
 
-Other than that this is a minor update, Enjoy your day!
+please run the following command before using CWD " gem install ruby-notify-send " once that has been run you can enjoy all the notification goodness this version has to offer. in the future i will be expanding on the settings with a new settings page that you can configure. but for now this is a great start.
+
+thats all.
 
 #WWG1WGA #MAGA #1776 #IStandWithRussia
 
