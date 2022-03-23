@@ -933,6 +933,14 @@ elsif control == "m"
     setup
   end
   control = gets.chomp
+elsif control == "l" && $logging == "y"
+  $logging = "n"
+  puts "Logging Disabled"
+  control = gets.chomp
+elsif control == "l" && $logging == "n"
+  $logging = "y"
+  puts "Logging Enabled"
+  control = gets.chomp
 else
   puts "unknown key, please try again."
   control = gets.chomp
@@ -1033,6 +1041,7 @@ puts "press 'q' + 'enter' to quit"
 puts "press 'n' + 'enter' to toggle notifications"
 puts "press 't' + 'enter' to change update time"
 puts "press 'm' + 'enter' to change currency"
+puts "press 'l' + 'enter' to toggle logging"
 sleep ($time)
 if $k == 1
   prices
