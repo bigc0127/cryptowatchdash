@@ -1,8 +1,8 @@
-Welcome to Version 16.0!
+Welcome to Version 16.5!
 
-new in this version is notifications which are turnd on at first run. this was a huge update and as such it does now how a new dependance which you will have to install before running CWD. 
+new in this version is notifications which can be turned on at any point, this was a huge update and as such it does now how a new dependance which you will have to install before running CWD. also new in this version is the control center which lets you control some parts of CWD without needing to rerun the program.
 
-please run the following command before using CWD " gem install ruby-notify-send " once that has been run you can enjoy all the notification goodness this version has to offer. in the future i will be expanding on the settings with a new settings page that you can configure. but for now this is a great start.
+please run the following command before using CWD " gem install ruby-notify-send " once that has been run you can enjoy all the notification goodness this version has to offer. 
 
 thats all.
 
