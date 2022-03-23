@@ -1,6 +1,8 @@
 Welcome to Version 17.0!
 
-new in this version is more control in the control center and the ability to change the display currency.
+new in this version is: 
+1. more control in the control center.
+2. the ability to change the display currency.
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
