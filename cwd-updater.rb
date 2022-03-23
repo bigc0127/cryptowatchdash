@@ -70,13 +70,7 @@ $update = gets.chomp
     system "gedit ./cryptodata.txt ./backup/#{$ltc}-cryptodata.txt"
     system "rm ./changelog.txt"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/changelog.txt"
-    system "clear"
-    system "cat ./changelog.txt"
-    version = %x[cat ./version-check]
-    installed = %x[cat ./installed-version]
-    puts "installed : #{installed.to_s}"
-    puts "online : #{version.to_s}"
-    puts "All Done, Goodbye!"
+    system "./after-effects.rb"
     else
       puts "exiting..."
 end
