@@ -11,87 +11,91 @@ def setup
   $ownbtc = ownbtcraw.to_f
   $oldpricebtc = 1
   $oldmoneybtc = 0
-  spentbtcraw = file_data[3]
-  $spentbtc = spentbtcraw.to_f
+  $spentbtcraw = file_data[3]
+  $spentbtc = $spentbtcraw.to_f
+
   ownbchraw = file_data[5]
   $ownbch = ownbchraw.to_f
   $oldpricebch = 1
   $oldmoneybch = 0
-  spentbchraw = file_data[7]
-  $spentbch = spentbchraw.to_f
+  $spentbchraw = file_data[7]
+  $spentbch = $spentbchraw.to_f
+
   ownltcraw = file_data[9]
   $ownltc = ownltcraw.to_f
   $oldpriceltc = 1
   $oldmoneyltc = 0
-  spentltcraw = file_data[11]
-  $spentltc = spentltcraw.to_f
+  $spentltcraw = file_data[11]
+  $spentltc = $spentltcraw.to_f
 
   owndogeraw = file_data[13]
   $owndoge = owndogeraw.to_f
   $oldpricedoge = 1
   $oldmoneydoge = 0
-  spentdogeraw = file_data[15]
-  $spentdoge = spentdogeraw.to_f
+  $spentdogeraw = file_data[15]
+  $spentdoge = $spentdogeraw.to_f
 
   ownxlmraw = file_data[17]
   $ownxlm = ownxlmraw.to_f
   $oldpricexlm = 1
   $oldmoneyxlm = 0
-  spentxlmraw = file_data[19]
-  $spentxlm = spentxlmraw.to_f
+  $spentxlmraw = file_data[19]
+  $spentxlm = $spentxlmraw.to_f
 
   ownbatraw = file_data[21]
   $ownbat = ownbatraw.to_f
   $oldpricebat = 1
   $oldmoneybat = 0
-  spentbatraw = file_data[23]
-  $spentbat = spentbatraw.to_f
+  $spentbatraw = file_data[23]
+  $spentbat = $spentbatraw.to_f
 
   ownethraw = file_data[25]
   $owneth = ownethraw.to_f
   $oldpriceeth = 1
   $oldmoneyeth = 0
-  spentethraw = file_data[27]
-  $spenteth = spentethraw.to_f
+  $spentethraw = file_data[27]
+  $spenteth = $spentethraw.to_f
 
   ownsolraw = file_data[29]
   $ownsol = ownsolraw.to_f
   $oldpricesol = 1
   $oldmoneysol = 0
-  spentsolraw = file_data[31]
-  $spentsol = spentsolraw.to_f
+  $spentsolraw = file_data[31]
+  $spentsol = $spentsolraw.to_f
 
   ownadaraw = file_data[33]
   $ownada = ownadaraw.to_f
   $oldpriceada = 1
   $oldmoneyada = 0
-  spentadaraw = file_data[35]
-  $spentada = spentadaraw.to_f
+  $spentadaraw = file_data[35]
+  $spentada = $spentadaraw.to_f
 
   ownlrcraw = file_data[37]
   $ownlrc = ownlrcraw.to_f
   $oldpricelrc = 1
   $oldmoneylrc = 0
-  spentlrcraw = file_data[39]
-  $spentlrc = spentlrcraw.to_f
+  $spentlrcraw = file_data[39]
+  $spentlrc = $spentlrcraw.to_f
 
   ownampraw = file_data[41]
   $ownamp = ownampraw.to_f
   $oldpriceamp = 1
   $oldmoneyamp = 0
-  spentampraw = file_data[43]
-  $spentamp = spentampraw.to_f
+  $spentampraw = file_data[43]
+  $spentamp = $spentampraw.to_f
 
   ownsklraw = file_data[45]
   $ownskl = ownsklraw.to_f
   $oldpriceskl = 1
   $oldmoneyskl = 0
-  spentsklraw = file_data[47]
-  $spentskl = spentsklraw.to_f
+  $spentsklraw = file_data[47]
+  $spentskl = $spentsklraw.to_f
 
   $cryptopricedata = Array.new(11)
+
 end
 def prices
+  if $currency == 3
       pricebtc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBTCUSD | awk -F "," '{print $7}']
       pricebch = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBCHN:USD | awk -F "," '{print $7}']
       priceltc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLTCUSD | awk -F "," '{print $7}']
@@ -104,6 +108,35 @@ def prices
       pricelrc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLRCUSD | awk -F "," '{print $7}']
       priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-usd/spot | awk -F '"' '{print $14}']
       priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-usd/spot | awk -F '"' '{print $14}']
+    elsif $currency == 2
+      pricebtc = %x[curl -s https://api.coinbase.com/v2/prices/btc-rub/spot | awk -F '"' '{print $14}']
+      pricebch = %x[curl -s https://api.coinbase.com/v2/prices/bch-rub/spot | awk -F '"' '{print $14}']
+      priceltc = %x[curl -s https://api.coinbase.com/v2/prices/ltc-rub/spot | awk -F '"' '{print $14}']
+      pricedoge = %x[curl -s https://api.coinbase.com/v2/prices/doge-rub/spot | awk -F '"' '{print $14}']
+      pricexlm = %x[curl -s https://api.coinbase.com/v2/prices/xlm-rub/spot | awk -F '"' '{print $14}']
+      pricebat = %x[curl -s https://api.coinbase.com/v2/prices/bat-rub/spot | awk -F '"' '{print $14}']
+      priceeth = %x[curl -s https://api.coinbase.com/v2/prices/eth-rub/spot | awk -F '"' '{print $14}']
+      pricesol = %x[curl -s https://api.coinbase.com/v2/prices/sol-rub/spot | awk -F '"' '{print $14}']
+      priceada = %x[curl -s https://api.coinbase.com/v2/prices/ada-rub/spot | awk -F '"' '{print $14}']
+      pricelrc = %x[curl -s https://api.coinbase.com/v2/prices/lrc-rub/spot | awk -F '"' '{print $14}']
+      priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-rub/spot | awk -F '"' '{print $14}']
+      priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-rub/spot | awk -F '"' '{print $14}']
+    elsif $currency == 1
+      pricebtc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBTCEUR | awk -F "," '{print $7}']
+      pricebch = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBCHN:EUR | awk -F "," '{print $7}']
+      priceltc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLTCEUR | awk -F "," '{print $7}']
+      pricedoge = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tDOGE:EUR | awk -F "," '{print $7}']
+      pricexlm = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tXLMEUR | awk -F "," '{print $7}']
+      pricebat = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBATEUR | awk -F "," '{print $7}']
+      priceeth = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tETHEUR | awk -F "," '{print $7}']
+      pricesol = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tSOLEUR | awk -F "," '{print $7}']
+      priceada = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tADAEUR | awk -F "," '{print $7}']
+      pricelrc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLRCEUR | awk -F "," '{print $7}']
+      priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-eur/spot | awk -F '"' '{print $14}']
+      priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-eur/spot | awk -F '"' '{print $14}']
+    else
+      puts "incorrect currency selection useing last saved prices and changing to USD"
+    end
 
       $pricebtc_f = pricebtc.to_f
       $pricebch_f = pricebch.to_f
@@ -344,9 +377,16 @@ def basicoutput
   puts "###### Crypto Watch Dashboard ######"
   puts "###### By Connor W. Needling ######"
   puts "###### Version #{$version.chomp} ######"
+if $currency == 3
+  moneysymbol = "$"
+elsif $currency == 2
+  moneysymbol = "₽"
+else
+  moneysymbol = "€"
+end
   if $ownbtc.to_f > 0
   print "spent "
-  print "$#{$spentbtc.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentbtc.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownbtc.to_s}".colorize(:black).on_yellow
   puts " BTC"
@@ -354,7 +394,7 @@ else
 end
 if $ownbch.to_f > 0
   print "spent "
-  print "$#{$spentbch.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentbch.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownbch.to_s}".colorize(:black).on_yellow
   puts " BCH"
@@ -362,7 +402,7 @@ else
 end
 if $ownltc.to_f > 0
   print "spent "
-  print "$#{$spentltc.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentltc.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownltc.to_s}".colorize(:black).on_yellow
   puts " LTC"
@@ -370,7 +410,7 @@ else
 end
 if $owndoge.to_f > 0
   print "spent "
-  print "$#{$spentdoge.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentdoge.to_s}".colorize(:black).on_green
   print " on "
   print "#{$owndoge.to_s}".colorize(:black).on_yellow
   puts " DOGE"
@@ -378,7 +418,7 @@ else
 end
 if $ownxlm.to_f > 0
   print "spent "
-  print "$#{$spentxlm.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentxlm.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownxlm.to_s}".colorize(:black).on_yellow
   puts " XLM"
@@ -386,7 +426,7 @@ else
 end
 if $ownbat.to_f > 0
   print "spent "
-  print "$#{$spentbat.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentbat.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownbat.to_s}".colorize(:black).on_yellow
   puts " BAT"
@@ -394,7 +434,7 @@ else
 end
 if $owneth.to_f > 0
   print "spent "
-  print "$#{$spenteth.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spenteth.to_s}".colorize(:black).on_green
   print " on "
   print "#{$owneth.to_s}".colorize(:black).on_yellow
   puts " ETH"
@@ -402,7 +442,7 @@ else
 end
 if $ownsol.to_f > 0
   print "spent "
-  print "$#{$spentsol.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentsol.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownsol.to_s}".colorize(:black).on_yellow
   puts " SOL"
@@ -410,7 +450,7 @@ else
 end
 if $ownada.to_f > 0
   print "spent "
-  print "$#{$spentada.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentada.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownada.to_s}".colorize(:black).on_yellow
   puts " ADA"
@@ -418,7 +458,7 @@ else
 end
 if $ownlrc.to_f > 0
   print "spent "
-  print "$#{$spentlrc.to_s}".colorize(:black).on_green
+  print "#{moneysymbol}#{$spentlrc.to_s}".colorize(:black).on_green
   print " on "
   print "#{$ownlrc.to_s}".colorize(:black).on_yellow
   puts " LRC"
@@ -426,7 +466,7 @@ else
 end
   if $ownamp.to_f > 0
     print "spent "
-    print "$#{$spentamp.to_s}".colorize(:black).on_green
+    print "#{moneysymbol}#{$spentamp.to_s}".colorize(:black).on_green
     print " on "
     print "#{$ownamp.to_s}".colorize(:black).on_yellow
     puts " AMP"
@@ -434,7 +474,7 @@ end
 end
   if $ownskl.to_f > 0
     print "spent "
-    print "$#{$spentskl.to_s}".colorize(:black).on_green
+    print "#{moneysymbol}#{$spentskl.to_s}".colorize(:black).on_green
     print " on "
     print "#{$ownskl.to_s}".colorize(:black).on_yellow
     puts " SKL"
@@ -442,214 +482,221 @@ end
 end
   if $ownbtc.to_f > 0
   print "Current BTC holdings Value: $#{$amountbtc_r} "
-  puts "($#{$earninsbtc_r.to_s})".colorize(:black).on_yellow
+  puts "(#{moneysymbol}#{$earninsbtc_r.to_s})".colorize(:black).on_yellow
 else
 end
 if $ownbch.to_f > 0
   print "Current BCH holdings Value: $#{$amountbch_r} "
-  puts "($#{$earninsbch_r.to_s})".colorize(:black).on_blue
+  puts "(#{moneysymbol}#{$earninsbch_r.to_s})".colorize(:black).on_blue
 else
 end
 if $ownltc.to_f > 0
   print "Current LTC holdings Value: $#{$amountltc_r} "
-  puts "($#{$earninsltc_r.to_s})".colorize(:black).on_white
+  puts "(#{moneysymbol}#{$earninsltc_r.to_s})".colorize(:black).on_white
 else
 end
 if $owndoge.to_f > 0
   print "Current DOGE holdings Value: $#{$amountdoge_r} "
-  puts "($#{$earninsdoge_r.to_s})".colorize(:black).on_red
+  puts "(#{moneysymbol}#{$earninsdoge_r.to_s})".colorize(:black).on_red
 else
 end
 if $ownxlm.to_f > 0
   print "Current XLM holdings Value: $#{$amountxlm_r} "
-  puts "($#{$earninsxlm_r.to_s})".colorize(:black).on_green
+  puts "(#{moneysymbol}#{$earninsxlm_r.to_s})".colorize(:black).on_green
 else
 end
 if $ownbat.to_f > 0
   print "current BAT holdings Value: $#{$amountbat_r} "
-  puts "($#{$earninsbat_r.to_s})".colorize(:black).on_cyan
+  puts "(#{moneysymbol}#{$earninsbat_r.to_s})".colorize(:black).on_cyan
 else
 end
 if $owneth.to_f > 0
   print "Current ETH holdings Value: $#{$amounteth_r} "
-  puts "($#{$earninseth_r.to_s})".colorize(:black).on_magenta
+  puts "(#{moneysymbol}#{$earninseth_r.to_s})".colorize(:black).on_magenta
 else
 end
 if $ownsol.to_f > 0
   print "Current SOL holdings Value: $#{$amountsol_r} "
-  puts "($#{$earninssol_r.to_s})".colorize(:black).on_light_yellow
+  puts "(#{moneysymbol}#{$earninssol_r.to_s})".colorize(:black).on_light_yellow
 else
 end
 if $ownada.to_f > 0
   print "current ADA holdings Value: $#{$amountada_r} "
-  puts "($#{$earninsada_r.to_s})".colorize(:black).on_light_blue
+  puts "(#{moneysymbol}#{$earninsada_r.to_s})".colorize(:black).on_light_blue
 else
 end
 if $ownlrc.to_f > 0
   print "current LRC holdings Value: $#{$amountlrc_r} "
-  puts "($#{$earninslrc_r.to_s})".colorize(:black).on_light_magenta
+  puts "(#{moneysymbol}#{$earninslrc_r.to_s})".colorize(:black).on_light_magenta
 else
 end
 if $ownamp.to_f > 0
   print "current AMP holdings Value: $#{$amountamp_r} "
-  puts "($#{$earninsamp_r.to_s})".colorize(:black).on_light_red
+  puts "(#{moneysymbol}#{$earninsamp_r.to_s})".colorize(:black).on_light_red
 else
 end
 if $ownskl.to_f > 0
   print "current SKL holdings Value: $#{$amountskl_r} "
-  puts "($#{$earninsskl_r.to_s})".colorize(:black).on_light_green
+  puts "(#{moneysymbol}#{$earninsskl_r.to_s})".colorize(:black).on_light_green
 else
 end
   if $ownbtc.to_f > 0
-  print "Current $BTC: $#{$pricebtc_r} ".yellow
+  print "Current #{moneysymbol}BTC: #{moneysymbol}#{$pricebtc_r} ".yellow
   if $pricebtc_r >= $breakevenbtc_r
-  puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_green.underline
+  puts "Break-Even: #{moneysymbol}#{$breakevenbtc_r}".colorize(:black).on_green.underline
 elsif $pricebtc_r == $breakevenbtc_r
-  puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even: #{moneysymbol}#{$breakevenbtc_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even: $#{$breakevenbtc_r}".colorize(:black).on_red.underline
+  puts "Break-Even: #{moneysymbol}#{$breakevenbtc_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownbch.to_f > 0
-  print "Current $BCH: $#{$pricebch_r} ".blue
+  print "Current #{moneysymbol}BCH: #{moneysymbol}#{$pricebch_r} ".blue
   if $pricebch_r >= $breakevenbch_r
-  puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_green.underline
+  puts "Break-Even BCH: #{moneysymbol}#{$breakevenbch_r}".colorize(:black).on_green.underline
 elsif $pricebch_r == $breakevenbch_r
-  puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even BCH: #{moneysymbol}#{$breakevenbch_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even BCH: $#{$breakevenbch_r}".colorize(:black).on_red.underline
+  puts "Break-Even BCH: #{moneysymbol}#{$breakevenbch_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownltc.to_f > 0
-  print "Current $LTC: $#{$priceltc_r} ".white
+  print "Current #{moneysymbol}LTC: #{moneysymbol}#{$priceltc_r} ".white
   if $priceltc_r >= $breakevenltc_r
-  puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_green.underline
+  puts "Break-Even LTC: #{moneysymbol}#{$breakevenltc_r}".colorize(:black).on_green.underline
 elsif $priceltc_r == $breakevenltc_r
-  puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even LTC: #{moneysymbol}#{$breakevenltc_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even LTC: $#{$breakevenltc_r}".colorize(:black).on_red.underline
+  puts "Break-Even LTC: #{moneysymbol}#{$breakevenltc_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $owndoge.to_f > 0
-  print "Current $DOGE: $#{$pricedoge_r} ".red
+  print "Current #{moneysymbol}DOGE: #{moneysymbol}#{$pricedoge_r} ".red
   if $pricedoge_r >= $breakevendoge_r
-  puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_green.underline
+  puts "Break-Even DOGE: #{moneysymbol}#{$breakevendoge_r}".colorize(:black).on_green.underline
 elsif $pricedoge_r == $breakevendoge_r
-  puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even DOGE: #{moneysymbol}#{$breakevendoge_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even DOGE: $#{$breakevendoge_r}".colorize(:black).on_red.underline
+  puts "Break-Even DOGE: #{moneysymbol}#{$breakevendoge_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownxlm.to_f > 0
-  print "Current $XLM: $#{$pricexlm_r} ".green
+  print "Current #{moneysymbol}XLM: #{moneysymbol}#{$pricexlm_r} ".green
   if $pricexlm_r >= $breakevenxlm_r
-  puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_green.underline
+  puts "Break-Even XLM: #{moneysymbol}#{$breakevenxlm_r}".colorize(:black).on_green.underline
 elsif $pricexlm_r == $breakevenxlm_r
-  puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even XLM: #{moneysymbol}#{$breakevenxlm_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even XLM: $#{$breakevenxlm_r}".colorize(:black).on_red.underline
+  puts "Break-Even XLM: #{moneysymbol}#{$breakevenxlm_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownbat.to_f > 0
-  print "Current $BAT: $#{$pricebat_r} ".cyan
+  print "Current #{moneysymbol}BAT: #{moneysymbol}#{$pricebat_r} ".cyan
   if $pricebat_r >= $breakevenbat_r
-  puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_green.underline
+  puts "Break-Even BAT: #{moneysymbol}#{$breakevenbat_r}".colorize(:black).on_green.underline
 elsif $pricebat_r == $breakevenbat_r
-    puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_yellow.underline
+    puts "Break-Even BAT: #{moneysymbol}#{$breakevenbat_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even BAT: $#{$breakevenbat_r}".colorize(:black).on_red.underline
+  puts "Break-Even BAT: #{moneysymbol}#{$breakevenbat_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $owneth.to_f > 0
-  print "Current $ETH: $#{$priceeth_r} ".magenta
+  print "Current #{moneysymbol}ETH: #{moneysymbol}#{$priceeth_r} ".magenta
   if $priceeth_r >= $breakeveneth_r
-  puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_green.underline
+  puts "Break-Even ETH: #{moneysymbol}#{$breakeveneth_r}".colorize(:black).on_green.underline
 elsif $priceeth_r == $breakeveneth_r
-  puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even ETH: #{moneysymbol}#{$breakeveneth_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even ETH: $#{$breakeveneth_r}".colorize(:black).on_red.underline
+  puts "Break-Even ETH: #{moneysymbol}#{$breakeveneth_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownsol.to_f > 0
-  print "Current $SOL: $#{$pricesol_r} ".light_yellow
+  print "Current #{moneysymbol}SOL: #{moneysymbol}#{$pricesol_r} ".light_yellow
   if $pricesol_r >= $breakevensol_r
-  puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_green.underline
+  puts "Break-Even SOL: #{moneysymbol}#{$breakevensol_r}".colorize(:black).on_green.underline
 elsif $pricesol_r == $breakevensol_r
-  puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even SOL: #{moneysymbol}#{$breakevensol_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even SOL: $#{$breakevensol_r}".colorize(:black).on_red.underline
+  puts "Break-Even SOL: #{moneysymbol}#{$breakevensol_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownada.to_f > 0
-  print "Current $ADA: $#{$priceada_r} ".light_blue
+  print "Current #{moneysymbol}ADA: #{moneysymbol}#{$priceada_r} ".light_blue
   if $priceada_r >= $breakevenada_r
-  puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_green.underline
+  puts "Break-Even ADA: #{moneysymbol}#{$breakevenada_r}".colorize(:black).on_green.underline
 elsif $priceada_r == $breakevenada_r
-  puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even ADA: #{moneysymbol}#{$breakevenada_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even ADA: $#{$breakevenada_r}".colorize(:black).on_red.underline
+  puts "Break-Even ADA: #{moneysymbol}#{$breakevenada_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownlrc.to_f > 0
-  print "Current $LRC: $#{$pricelrc_r} ".light_magenta
+  print "Current #{moneysymbol}LRC: #{moneysymbol}#{$pricelrc_r} ".light_magenta
   if $pricelrc_r >= $breakevenlrc_r
-  puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_green.underline
+  puts "Break-Even LRC: #{moneysymbol}#{$breakevenlrc_r}".colorize(:black).on_green.underline
 elsif $pricelrc_r == $breakevenlrc_r
-  puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even LRC: #{moneysymbol}#{$breakevenlrc_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even LRC: $#{$breakevenlrc_r}".colorize(:black).on_red.underline
+  puts "Break-Even LRC: #{moneysymbol}#{$breakevenlrc_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownamp.to_f > 0
-  print "Current $AMP: $#{$priceamp_r} ".light_red
+  print "Current #{moneysymbol}AMP: #{moneysymbol}#{$priceamp_r} ".light_red
   if $priceamp_r >= $breakevenamp_r
-  puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_green.underline
+  puts "Break-Even AMP: #{moneysymbol}#{$breakevenamp_r}".colorize(:black).on_green.underline
 elsif $priceamp_r == $breakevenamp_r
-  puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_yellow.underline
+  puts "Break-Even AMP: #{moneysymbol}#{$breakevenamp_r}".colorize(:black).on_yellow.underline
 else
-  puts "Break-Even AMP: $#{$breakevenamp_r}".colorize(:black).on_red.underline
+  puts "Break-Even AMP: #{moneysymbol}#{$breakevenamp_r}".colorize(:black).on_red.underline
 end
 else
 end
 if $ownskl.to_f > 0
-  print "Current $SKL $#{$priceskl_r} ".light_green
+  print "Current #{moneysymbol}SKL #{moneysymbol}#{$priceskl_r} ".light_green
   if $priceskl_r >= $breakevenskl_r
-    puts "Break-Even SKL: $#{$breakevenskl_r}".colorize(:black).on_green.underline
+    puts "Break-Even SKL: #{moneysymbol}#{$breakevenskl_r}".colorize(:black).on_green.underline
   elsif $priceskl_r == $breakevenskl_r
-    puts "Break-Even SKL: $#{$breakevenskl_r}".colorize(:black).on_yellow.underline
+    puts "Break-Even SKL: #{moneysymbol}#{$breakevenskl_r}".colorize(:black).on_yellow.underline
   else
-    puts "Break-Even SKL: $#{$breakevenskl_r}".colorize(:black).on_red.underline
+    puts "Break-Even SKL: #{moneysymbol}#{$breakevenskl_r}".colorize(:black).on_red.underline
   end
 else
 end
 end
 def advanceoutput
-  if $totalearnins >= 0
+if $currency == 3
+    moneysymbol = "$"
+elsif $currency == 2
+    moneysymbol = "₽"
+else
+  moneysymbol = "€"
+end
+if $totalearnins >= 0
   print "Total Gains: "
-  puts "#{$totalearnins.to_s}".colorize(:black).on_green.underline
+  puts "#{moneysymbol}#{$totalearnins.to_s}".colorize(:black).on_green.underline
   print "Total Spent: "
-  puts "#{$totalspent.round(2)}"
+  puts "#{moneysymbol}#{$totalspent.round(2)}"
   print "Total Value: "
-  puts "#{$totalvalue.to_s}".colorize(:black).on_green.underline
+  puts "#{moneysymbol}#{$totalvalue.to_s}".colorize(:black).on_green.underline
   print "Precentage Gains: "
   puts "#{$precentage}%"
 else
   print "Total losses: "
-  puts "#{$totalearnins.to_s}".colorize(:white).on_red.underline
+  puts "#{moneysymbol}#{$totalearnins.to_s}".colorize(:white).on_red.underline
   print "Total Spent: "
-  puts "#{$totalspent.round(2)}"
+  puts "#{moneysymbol}#{$totalspent.round(2)}"
   print "Total Value: "
-  puts "#{$totalvalue.to_s}".colorize(:black).on_green.underline
+  puts "#{moneysymbol}#{$totalvalue.to_s}".colorize(:black).on_green.underline
   print "Precentage loss: "
   puts "#{$precentage}%"
 end
@@ -778,20 +825,78 @@ def logging
 end
 end
 def notifications
+  if $currency == 3
+    moneysymbol = "$"
+  elsif $currency == 2
+    moneysymbol = "₽"
+  else
+    moneysymbol = "€"
+  end
 if $n == 10
-  NotifySend.send "CryptoWatchDash","Total earnins #{$totalearnins.to_s} Total H$ #{$totalvalue} H$ % Change (#{$precentage}%)","info",500
+  NotifySend.send "CryptoWatchDash","Total earnins #{$totalearnins.to_s} Total H#{moneysymbol} #{$totalvalue} H#{moneysymbol} % Change (#{$precentage}%)","info",500
   $n = 0
 else
 end
 end
+def convert
+  if $currency == 3 && $sourcecur == 1
+    $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/usd.min.json | awk -F ":" '{print $3}' | tr -d {}]
+    $curconv = $curconv.to_f
+  elsif $currency == 2 && $sourcecur == 1
+    $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/rub.min.json | awk -F ":" '{print $3}' | tr -d {}]
+    $curconv = $curconv.to_f
+  elsif $currency == 1 && $sourcecur == 1
+    $curconv = 1.to_f
+  elsif $currency == 3 && $sourcecur == 2
+    $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/rub/usd.min.json | awk -F ":" '{print $3}' | tr -d {}]
+    $curconv = $curconv.to_f
+  elsif $currency == 2 && $sourcecur == 2
+    $curconv = 1.to_f
+  elsif $currency == 1 && $sourcecur == 2
+    $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/rub/eur.min.json | awk -F ":" '{print $3}' | tr -d {}]
+    $curconv = $curconv.to_f
+  elsif $currency == 3 && $sourcecur == 3
+    $curconv = 1.to_f
+  elsif $currency == 2 && $sourcecur == 3
+    $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd/rub.min.json | awk -F ":" '{print $3}' | tr -d {}]
+    $curconv = $curconv.to_f
+  elsif $currency == 1 && $sourcecur == 3
+    $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd/eur.min.json | awk -F ":" '{print $3}' | tr -d {}]
+    $curconv = $curconv.to_f
+  else
+    puts "ERROR DEFAULTING TO USD"
+  end
+  $spentbtc = ($spentbtcraw.to_f * $curconv.to_f)
+  $spentbch = ($spentbchraw.to_f * $curconv.to_f)
+  $spentltc = ($spentltcraw.to_f * $curconv.to_f)
+  $spentdoge = ($spentdogeraw.to_f * $curconv.to_f)
+  $spentxlm = ($spentxlmraw.to_f * $curconv.to_f)
+  $spentbat = ($spentbatraw.to_f * $curconv.to_f)
+  $spenteth = ($spentethraw.to_f * $curconv.to_f)
+  $spenteth = ($spentethraw.to_f * $curconv.to_f)
+  $spentsol = ($spentsolraw.to_f * $curconv.to_f)
+  $spentlrc = ($spentlrcraw.to_f * $curconv.to_f)
+  $spentada = ($spentadaraw.to_f * $curconv.to_f)
+  $spentamp = ($spentampraw.to_f * $curconv.to_f)
+  $spentskl = ($spentsklraw.to_f * $curconv.to_f)
+  $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc + $spentamp + $spentskl)
+end
+
 $k = 1
 $n = 0
 puts "enable notifications? (y/n)"
 $noti = gets.chomp
+$sourcecur = 0
+until $sourcecur == 1 || $sourcecur == 2 || $sourcecur == 3 do
+puts "what is source Currency? (1 for EUR, 2 for RUB, 3 for USD)"
+$sourcecur = gets.to_i
+$currency = $sourcecur.to_i
+end
+puts "would you like to enable logging? (y/n)"
+$logging = gets.chomp
 setup
 system "clear"
 puts "Loading crypto Prices....."
-
 Thread.new {control = gets.chomp
 while $k == 1 do
 if control == "q"
@@ -810,14 +915,32 @@ elsif control == "t"
   print "enter new time between updates in seconds: "
   $time = gets.to_i
   control = gets.chomp
+elsif control == "m"
+  puts "what currency would you like to display in? (1 for EUR, 2 for RUB, 3 for USD)"
+  $currency = gets.to_i
+  if $currency == 3
+    puts "currency is now USD"
+    setup
+  elsif $currency == 2
+    puts "currency is now RUB"
+    setup
+  elsif $currency == 1
+    puts "currency is now EUR"
+    setup
+  else
+    puts "incorrect key defaulting to USD"
+    $currency = 3
+    setup
+  end
+  control = gets.chomp
 else
   puts "unknown key, please try again."
   control = gets.chomp
 end
 end}
-
 prices
 while $k == 1 do
+convert
 basicoutput
 advanceoutput
 puts "\n"
@@ -870,7 +993,10 @@ if $ownskl.to_f > 0
 else
 end
 trendingclose
-logging
+if $logging == "y"
+  logging
+else
+end
 if $noti == "y"
 notifications
 $n += 1
@@ -879,14 +1005,34 @@ end
 puts " "
 puts "=========control-center========="
 if $noti == "y"
-  puts "notifications are currently on"
+  print "notifications are currently "
+  puts "on".colorize(:black).on_green
 else
-  puts "notifications are currently off"
+  print "notifications are currently "
+  puts "off".colorize(:black).on_red
+end
+if $currency == 3
+  puts "Display currency is currently USD"
+elsif $currency == 2
+  puts "Display currency is currently RUB"
+elsif $currency == 1
+  puts "Display currency is currently EUR"
+else
+  puts "ERROR! Incorect currency selection, Currency being set to USD".colorize(:black).on_red
+  $currency == 3
+end
+if $logging == "y"
+  print "Logging "
+  puts "Enabled".colorize(:black).on_green
+else
+  print "Logging "
+  puts "Disabled".colorize(:black).on_red
 end
 puts "current time between updates is #{$time.to_s} seconds"
 puts "press 'q' + 'enter' to quit"
 puts "press 'n' + 'enter' to toggle notifications"
 puts "press 't' + 'enter' to change update time"
+puts "press 'm' + 'enter' to change currency"
 sleep ($time)
 if $k == 1
   prices
