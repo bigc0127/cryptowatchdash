@@ -1,8 +1,8 @@
 Welcome to Version 16.5.1!
 
 new in this version is notifications which can be turned on at any point.
-this was a huge update and as such it does now how a new dependance which you will have to install before running CWD. 
-also new in this version is the control center which lets you control some parts of CWD without needing to rerun the program.
+this was a huge update and is the start of lots of new things to come.
+also new in this version is the control center which lets you control some parts of CWD while it runs.
 
 IF YOU ARE COMMING FROM A VIRSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
