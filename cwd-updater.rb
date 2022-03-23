@@ -70,6 +70,9 @@ $update = gets.chomp
     system "gedit ./cryptodata.txt ./backup/#{$ltc}-cryptodata.txt"
     system "rm ./changelog.txt"
     system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/changelog.txt"
+    system "rm ./after-effects.rb"
+    system "wget https://raw.githubusercontent.com/bigc0127/cryptowatchdash/main/after-effects.rb"
+    system "chmod +x ./after-effects.rb"
     system "./after-effects.rb"
     else
       puts "exiting..."
