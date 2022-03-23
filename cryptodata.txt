@@ -1,48 +1,48 @@
 ####type amount of BTC owned below this line####
 0.0
-####Type amount of $USD spent on BTC below this line####
+####Type amount of money spent on BTC below this line####
 0.0
 ####type amount of BCH owned below this line####
 0.0
-####Type amount of $USD spent on BCH below this line####
+####Type amount of money spent on BCH below this line####
 0.0
 ####Type amountof LTC owned below this line####
 0.0
-####Type amount of $USD spent on LTC below this line####
+####Type amount of money spent on LTC below this line####
 0.0
 ####Type amount of DOGE owned below this line####
 0.0
-####Type amount of $USD spent on DOGE below this line####
+####Type amount of money spent on DOGE below this line####
 0.0
 ####Type amount of XLM owned below this line ####
 0.0
-####Type amount of $USD spent on XLM below this line ####
+####Type amount of money spent on XLM below this line ####
 0.0
 ####Type amount of BAT owned below this line ####
 0.0
-####Type amount of $USD spent on BAT below this line ####
+####Type amount of money spent on BAT below this line ####
 0.0
 ####Type amount of ETH owned below this line ####
 0.0
-####Type amount of $USD spent on ETH below this line ####
+####Type amount of money spent on ETH below this line ####
 0.0
 ####Type amount of SOL owned below this line ####
 0.0
-####Type amount of $USD spent on SOL below this line ####
+####Type amount of moeny spent on SOL below this line ####
 0.0
 ####Type amount of ADA owned below this line ####
 0.0
-####Type amount of $USD spent on ADA below this line ####
+####Type amount of money spent on ADA below this line ####
 0.0
 ####Type amount of LRC owned below this line ####
 0.0
-####Type amount of $USD spent on LRC below this line ####
+####Type amount of money spent on LRC below this line ####
 0.0
 ####Type amount of AMP owned below this line ####
 0.0
-####Type amount of $USD spent on AMP below this line ####
+####Type amount of money spent on AMP below this line ####
 0.0
 ####Type amount of SKL owned below this line ####
 0.0
-####Type amount of $USD spent on SKL below this line ####
+####Type amount of money spent on SKL below this line ####
 0.0
