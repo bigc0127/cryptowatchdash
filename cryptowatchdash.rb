@@ -791,6 +791,31 @@ $noti = gets.chomp
 setup
 system "clear"
 puts "Loading crypto Prices....."
+
+Thread.new {control = gets.chomp
+while $k == 1 do
+if control == "q"
+  $k = 2
+  puts "Exiting......"
+elsif control == "n" && $noti == "y"
+  $noti = "n"
+  puts "notifications off"
+  control = gets.chomp
+elsif control == "n" && $noti == "n"
+  $noti = "y"
+  puts "notifications on"
+  $n = 10
+  control = gets.chomp
+elsif control == "t"
+  print "enter new time between updates in seconds: "
+  $time = gets.to_i
+  control = gets.chomp
+else
+  puts "unknown key, please try again."
+  control = gets.chomp
+end
+end}
+
 prices
 while $k == 1 do
 basicoutput
@@ -851,6 +876,20 @@ notifications
 $n += 1
 else
 end
+puts " "
+puts "=========control-center========="
+if $noti == "y"
+  puts "notifications are currently on"
+else
+  puts "notifications are currently off"
+end
+puts "current time between updates is #{$time.to_s} seconds"
+puts "press 'q' + 'enter' to quit"
+puts "press 'n' + 'enter' to toggle notifications"
+puts "press 't' + 'enter' to change update time"
 sleep ($time)
-prices
+if $k == 1
+  prices
+else
+end
 end
