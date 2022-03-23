@@ -779,7 +779,7 @@ end
 end
 def notifications
 if $n == 10
-  NotifySend.send "CryptoWatchDash","Total earnins #{$totalearnins.to_s} Total H$ #{$totalvalue} H$ % Change (#{$precentage})","info",500
+  NotifySend.send "CryptoWatchDash","Total earnins #{$totalearnins.to_s} Total H$ #{$totalvalue} H$ % Change (#{$precentage}%)","info",500
   $n = 0
 else
 end
