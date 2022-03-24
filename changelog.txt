@@ -1,8 +1,9 @@
-Welcome to Version 17.0!
+Welcome to Version 17.1!
 
 new in this version is: 
 1. more control in the control center.
 2. the ability to change the display currency.
+3. added display currency to logging
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
