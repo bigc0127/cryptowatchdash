@@ -46,3 +46,7 @@
 0.0
 ####Type amount of money spent on SKL below this line ####
 0.0
+####Type amount of GRT owned below this lind####
+0.0
+####Type amount of money spent on GRT below this line####
+0.0

@@ -91,7 +91,14 @@ def setup
   $spentsklraw = file_data[47]
   $spentskl = $spentsklraw.to_f
 
-  $cryptopricedata = Array.new(11)
+  owngrtraw = file_data[49]
+  $owngrt = owngrtraw.to_f
+  $oldpricegrt = 1
+  $oldmoneygrt = 0
+  $spentgrtraw = file_data[51]
+  $spentgrt = $spentgrtraw.to_f
+
+  $cryptopricedata = Array.new(12)
 
 end
 def prices
@@ -108,6 +115,7 @@ def prices
       pricelrc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLRCUSD | awk -F "," '{print $7}']
       priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-usd/spot | awk -F '"' '{print $14}']
       priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-usd/spot | awk -F '"' '{print $14}']
+      pricegrt = %x[curl -s https://api.coinbase.com/v2/prices/grt-usd/spot | awk -F '"' '{print $14}']
     elsif $currency == 2
       pricebtc = %x[curl -s https://api.coinbase.com/v2/prices/btc-rub/spot | awk -F '"' '{print $14}']
       pricebch = %x[curl -s https://api.coinbase.com/v2/prices/bch-rub/spot | awk -F '"' '{print $14}']
@@ -121,6 +129,7 @@ def prices
       pricelrc = %x[curl -s https://api.coinbase.com/v2/prices/lrc-rub/spot | awk -F '"' '{print $14}']
       priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-rub/spot | awk -F '"' '{print $14}']
       priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-rub/spot | awk -F '"' '{print $14}']
+      pricegrt = %x[curl -s https://api.coinbase.com/v2/prices/grt-rub/spot | awk -F '"' '{print $14}']
     elsif $currency == 1
       pricebtc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBTCEUR | awk -F "," '{print $7}']
       pricebch = %x[curl -s https://api.coinbase.com/v2/prices/bch-eur/spot | awk -F '"' '{print $14}']
@@ -134,8 +143,10 @@ def prices
       pricelrc = %x[curl -s https://api.coinbase.com/v2/prices/lrc-eur/spot | awk -F '"' '{print $14}']
       priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-eur/spot | awk -F '"' '{print $14}']
       priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-eur/spot | awk -F '"' '{print $14}']
+      pricegrt = %x[curl -s https://api.coinbase.com/v2/prices/grt-eur/spot | awk -F '"' '{print $14}']
     else
       puts "incorrect currency selection useing last saved prices and changing to USD"
+      $currency == 3
     end
 
       $pricebtc_f = pricebtc.to_f
@@ -150,6 +161,7 @@ def prices
       $pricelrc_f = pricelrc.to_f
       $priceamp_f = priceamp.to_f
       $priceskl_f = priceskl.to_f
+      $pricegrt_f = pricegrt.to_f
 
       $pricebtc_r = $pricebtc_f.round(3)
       $pricebch_r = $pricebch_f.round(3)
@@ -163,6 +175,7 @@ def prices
       $pricelrc_r = $pricelrc_f.round(3)
       $priceamp_r = $priceamp_f.round(4)
       $priceskl_r = $priceskl_f.round(4)
+      $pricegrt_r = $pricegrt_f.round(3)
 
       amountbtc = $ownbtc * $pricebtc_f
       amountbch = $ownbch * $pricebch_f
@@ -176,6 +189,7 @@ def prices
       amountlrc = $ownlrc * $pricelrc_f
       amountamp = $ownamp * $priceamp_f
       amountskl = $ownskl * $priceskl_f
+      amountgrt = $owngrt * $pricegrt_f
 
       $amountbtc_r = amountbtc.round(2)
       $amountbch_r = amountbch.round(2)
@@ -189,6 +203,7 @@ def prices
       $amountlrc_r = amountlrc.round(2)
       $amountamp_r = amountamp.round(2)
       $amountskl_r = amountskl.round(2)
+      $amountgrt_r = amountgrt.round(2)
 
       breakevenbtc = ($spentbtc / $ownbtc)
       breakevenbch = ($spentbch / $ownbch)
@@ -202,6 +217,7 @@ def prices
       breakevenlrc = ($spentlrc / $ownlrc)
       breakevenamp = ($spentamp / $ownamp)
       breakevenskl = ($spentskl / $ownskl)
+      breakevengrt = ($spentgrt / $owngrt)
 
       $breakevenbtc_r = breakevenbtc.round(2)
       $breakevenbch_r = breakevenbch.round(2)
@@ -215,6 +231,7 @@ def prices
       $breakevenlrc_r = breakevenlrc.round(2)
       $breakevenamp_r = breakevenamp.round(3)
       $breakevenskl_r = breakevenskl.round(3)
+      $breakevengrt_r = breakevengrt.round(3)
 
       earninsbtc = (($spentbtc - amountbtc) * -1)
       changebtc = ($oldmoneybtc - earninsbtc)
@@ -276,9 +293,14 @@ def prices
       $earninsskl_r = earninsskl.round(2)
       $oldmoneyskl = earninsskl
 
-      $totalearnins = ($earninsbtc_r + $earninsbch_r + $earninsltc_r + $earninsdoge_r + $earninsxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r + $earninsamp_r + $earninsskl_r).round(2)
-      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r + $amountamp_r + $amountskl_r).round(2)
-      $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc + $spentamp + $spentskl)
+      earninsgrt = (($spentgrt - amountgrt) * -1)
+      changegrt = ($oldmoneygrt - earninsgrt)
+      $earninsgrt_r = earninsgrt.round(2)
+      $oldmoneygrt = earninsgrt
+
+      $totalearnins = ($earninsbtc_r + $earninsbch_r + $earninsltc_r + $earninsdoge_r + $earninsxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r + $earninsamp_r + $earninsskl_r + $earninsgrt_r).round(2)
+      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r + $amountamp_r + $amountskl_r + $earninsgrt_r).round(2)
+      $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc + $spentamp + $spentskl + $spentgrt)
 
       $precentage = ((($totalvalue - $totalspent) / $totalspent) * 100)
       $cryptopricedata = Marshal.load File.read('cryptopricedata.txt')
@@ -319,6 +341,9 @@ def prices
       $oldpriceskl = $cryptopricedata[11]
       $oldpriceskl = $oldpriceskl.to_f
 
+      $oldpricegrt = $cryptopricedata[12]
+      $oldpricegrt = $oldpricegrt.to_f
+
       btcpchange = ((($pricebtc_f - $oldpricebtc.to_f) / $oldpricebtc.to_f) * 100.0)
       $btcpchange_r = btcpchange.round(2)
 
@@ -355,6 +380,9 @@ def prices
       sklpchange = ((($priceskl_f - $oldpriceskl.to_f) / $oldpriceskl.to_f) * 100.0)
       $sklpchange_r = sklpchange.round(2)
 
+      grtpchange = ((($pricegrt_f - $oldpricegrt.to_f) / $oldpricegrt.to_f) * 100.0)
+      $grtpchange_r = grtpchange.round(2)
+
       $cryptopricedata[0] = "#{$pricebtc_f}"
       $cryptopricedata[1] = "#{$pricebch_f}"
       $cryptopricedata[2] = "#{$priceltc_f}"
@@ -367,6 +395,7 @@ def prices
       $cryptopricedata[9] = "#{$pricelrc_f}"
       $cryptopricedata[10] = "#{$priceamp_f}"
       $cryptopricedata[11] = "#{$priceskl_f}"
+      $cryptopricedata[12] = "#{$pricegrt_f}"
 
       $precentage = $precentage.round(2)
       $serialized_array = Marshal.dump($cryptopricedata)
@@ -480,6 +509,14 @@ end
     puts " SKL"
   else
 end
+  if $owngrt.to_f > 0
+    print "spent "
+    print "#{moneysymbol}#{$spentgrt.to_s}".colorize(:black).on_green
+    print " on "
+    print "#{$owngrt.to_s}".colorize(:black).on_yellow
+    puts " GRT"
+  else
+end
   if $ownbtc.to_f > 0
   print "Current BTC holdings Value: $#{$amountbtc_r} "
   puts "(#{moneysymbol}#{$earninsbtc_r.to_s})".colorize(:black).on_yellow
@@ -538,6 +575,11 @@ end
 if $ownskl.to_f > 0
   print "current SKL holdings Value: $#{$amountskl_r} "
   puts "(#{moneysymbol}#{$earninsskl_r.to_s})".colorize(:black).on_light_green
+else
+end
+if $owngrt.to_f > 0
+  print "current GRT holdings Value: $#{$amountgrt_r} "
+  puts "(#{moneysymbol}#{$earninsgrt_r.to_s})".colorize(:black).on_light_green
 else
 end
   if $ownbtc.to_f > 0
@@ -669,6 +711,17 @@ if $ownskl.to_f > 0
     puts "Break-Even SKL: #{moneysymbol}#{$breakevenskl_r}".colorize(:black).on_yellow.underline
   else
     puts "Break-Even SKL: #{moneysymbol}#{$breakevenskl_r}".colorize(:black).on_red.underline
+  end
+else
+end
+if $owngrt.to_f > 0
+  print "Current #{moneysymbol}GRT #{moneysymbol}#{$pricegrt_r} ".light_green
+  if $pricegrt_r >= $breakevengrt_r
+    puts "Break-Even GRT: #{moneysymbol}#{$breakevengrt_r}".colorize(:black).on_green.underline
+  elsif $pricegrt_r == $breakevengrt_r
+    puts "Break-Even GRT: #{moneysymbol}#{$breakevengrt_r}".colorize(:black).on_yellow.underline
+  else
+    puts "Break-Even GRT: #{moneysymbol}#{$breakevengrt_r}".colorize(:black).on_red.underline
   end
 else
 end
@@ -813,6 +866,15 @@ def skltrending
     puts "SKL price has not changed"
   end
 end
+def grttrending
+  if $pricegrt_f > $oldpricegrt
+    puts "GRT trending up #{$grtpchange_r}%".colorize(:green).on_black.blink
+  elsif $pricegrt_f < $oldpricegrt
+    puts "GRT trending down #{$grtpchange_r}%".colorize(:red).on_black.blink
+  else
+    puts "GRT price has not changed"
+  end
+end
 def trendingclose
     time = Time.new
     $ltc = time.strftime("%Y-%m-%d-%H:%M:%S")
@@ -821,9 +883,10 @@ def trendingclose
 end
 def logging
   CSV.open("#{$dataset}-logging.csv", "ab") do |csv|
-  csv << ["#{$ltc}","#{$currency}","#{$pricebtc_f}","#{$amountbtc_r}","#{$btcpchange_r}","#{$pricebch_f}","#{$amountbch_r}","#{$bchpchange_r}","#{$priceltc_f}","#{$amountltc_r}","#{$ltcpchange_r}","#{$pricedoge_f}","#{$amountdoge_r}","#{$dogepchange_r}","#{$pricexlm_f}","#{$amountxlm_r}","#{$xlmpchange_r}","#{$pricebat_f}","#{$amountbat_r}","#{$batpchange_r}","#{$priceeth_f}","#{$amounteth_r}","#{$ethpchange_r}","#{$pricesol_f}","#{$amountsol_r}","#{$solpchange_r}","#{$priceada_f}","#{$amountada_r}","#{$adapchange_r}","#{$pricelrc_f}","#{$amountlrc_r}","#{$lrcpchange_r}","#{$priceamp_f}","#{$amountamp_r}","#{$amppchange_r}","#{$priceskl_f}","#{$amountskl_r}","#{$sklpchange_r}","#{$totalearnins}","#{$precentage}%"]
+  csv << ["#{$ltc}","#{$currency}","#{$pricebtc_f}","#{$amountbtc_r}","#{$btcpchange_r}","#{$pricebch_f}","#{$amountbch_r}","#{$bchpchange_r}","#{$priceltc_f}","#{$amountltc_r}","#{$ltcpchange_r}","#{$pricedoge_f}","#{$amountdoge_r}","#{$dogepchange_r}","#{$pricexlm_f}","#{$amountxlm_r}","#{$xlmpchange_r}","#{$pricebat_f}","#{$amountbat_r}","#{$batpchange_r}","#{$priceeth_f}","#{$amounteth_r}","#{$ethpchange_r}","#{$pricesol_f}","#{$amountsol_r}","#{$solpchange_r}","#{$priceada_f}","#{$amountada_r}","#{$adapchange_r}","#{$pricelrc_f}","#{$amountlrc_r}","#{$lrcpchange_r}","#{$priceamp_f}","#{$amountamp_r}","#{$amppchange_r}","#{$priceskl_f}","#{$amountskl_r}","#{$sklpchange_r}","#{$pricegrt_f}","#{$amountgrt_r}","#{$grtpchange_r}","#{$totalearnins}","#{$precentage}%"]
 end
 end
+
 def notifications
   if $currency == 3
     moneysymbol = "$"
@@ -838,6 +901,7 @@ if $n == 10
 else
 end
 end
+
 def convert
   if $currency == 3 && $sourcecur == 1
     $curconv = %x[curl -s https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/usd.min.json | awk -F ":" '{print $3}' | tr -d {}]
@@ -896,7 +960,18 @@ puts "would you like to enable logging? (y/n)"
 $logging = gets.chomp
 setup
 system "clear"
-puts "Loading crypto Prices....."
+$loading = 0
+Thread.new {until $loading == 1 do
+  print "Loading latest Crypto Prices"
+  $run = 1
+  until $run == 6 do
+    print "."
+    $run += 1
+    sleep 0.3
+  end
+  print "\n"
+  system "clear"
+end}
 Thread.new {control = gets.chomp
 while $k == 1 do
 if control == "q"
@@ -947,6 +1022,8 @@ else
 end
 end}
 prices
+$loading = 1
+sleep 2
 while $k == 1 do
 convert
 basicoutput
@@ -998,6 +1075,10 @@ else
 end
 if $ownskl.to_f > 0
   skltrending
+else
+end
+if $owngrt.to_f > 0
+  grttrending
 else
 end
 trendingclose
