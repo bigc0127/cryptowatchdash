@@ -12,7 +12,7 @@ Thread.new {until $loading == 1 do
   print "\n"
   system "clear"
 end}
-$cryptopricedata = Array.new(12)
+$cryptopricedata = Array.new(14)
 pricebtc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBTCUSD | awk -F "," '{print $7}']
 pricebch = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tBCHN:USD | awk -F "," '{print $7}']
 priceltc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLTCUSD | awk -F "," '{print $7}']
@@ -26,6 +26,7 @@ pricelrc = %x[curl -s https://api-pub.bitfinex.com/v2/ticker/tLRCUSD | awk -F ",
 priceamp = %x[curl -s https://api.coinbase.com/v2/prices/amp-usd/spot | awk -F '"' '{print $14}']
 priceskl = %x[curl -s https://api.coinbase.com/v2/prices/skl-usd/spot | awk -F '"' '{print $14}']
 pricegrt = %x[curl -s https://api.coinbase.com/v2/prices/grt-usd/spot | awk -F '"' '{print $14}']
+pricemln = %x[curl -s https://api.coinbase.com/v2/prices/mln-usd/spot | awk -F '"' '{print $14}']
 $pricebtc_f = pricebtc.to_f
 $pricebch_f = pricebch.to_f
 $priceltc_f = priceltc.to_f
@@ -39,6 +40,7 @@ $pricelrc_f = pricelrc.to_f
 $priceamp_f = priceamp.to_f
 $priceskl_f = priceskl.to_f
 $pricegrt_f = pricegrt.to_f
+$pricemln_f = pricemln.to_f
 $cryptopricedata = Marshal.load File.read('cryptopricedata.txt')
 $cryptopricedata[0] = "#{$pricebtc_f}"
 $cryptopricedata[1] = "#{$pricebch_f}"
@@ -53,6 +55,7 @@ $cryptopricedata[9] = "#{$pricelrc_f}"
 $cryptopricedata[10] = "#{$priceamp_f}"
 $cryptopricedata[11] = "#{$priceskl_f}"
 $cryptopricedata[12] = "#{$pricegrt_f}"
+$cryptopricedata[13] = "#{$pricemln_f}"
 $serialized_array = Marshal.dump($cryptopricedata)
 $loading = 1
 system "gem install csv"

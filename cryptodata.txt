@@ -50,3 +50,7 @@
 0.0
 ####Type amount of money spent on GRT below this line####
 0.0
+####Type amount of MLN owned below the line####
+0.0
+####Type amount of money spent on MLN below this line####
+0.0
