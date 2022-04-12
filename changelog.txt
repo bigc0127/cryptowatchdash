@@ -1,7 +1,8 @@
-Welcome to Version 17.2!
+Welcome to Version 17.3!
 
 new in this version is: 
-1. Added GRT to list of supported Crypto
+1. Added MLN to list of supported Crypto
+2. Fixed Currency convert not working for GRT
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
