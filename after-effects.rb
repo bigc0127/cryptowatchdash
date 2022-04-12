@@ -2,7 +2,7 @@
 system "clear"
 $loading = 0
 Thread.new {until $loading == 1 do
-  print "Loading new Crypto Prices"
+  print "Updating Crypto Price Database"
   $run = 1
   until $run == 6 do
     print "."
