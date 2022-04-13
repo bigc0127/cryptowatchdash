@@ -1,8 +1,10 @@
-Welcome to Version 17.3!
+Welcome to Version 17.3.5!
 
-new in this version is: 
-1. Added MLN to list of supported Crypto
-2. Fixed Currency convert not working for GRT
+new in this version is compared to last version: 
+
+1. Removed Crypto Color coding to allow for more coins
+2. Added Seperators between sections
+3. Fixed minor formatting issue cause by missing : 
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
