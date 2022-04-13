@@ -65,6 +65,8 @@ system "clear"
 system "cat ./changelog.txt"
 version = %x[cat ./version-check]
 installed = %x[cat ./installed-version]
+old = %x[cat ./old-version]
+puts "uninstalled : #{old.to_s}"
 puts "installed : #{installed.to_s}"
 puts "online : #{version.to_s}"
 puts "All Done, Goodbye!"
