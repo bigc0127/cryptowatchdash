@@ -320,7 +320,7 @@ def prices
       $oldmoneymln = earninsmln
 
       $totalearnins = ($earninsbtc_r + $earninsbch_r + $earninsltc_r + $earninsdoge_r + $earninsxlm_r + $earninsbat_r + $earninseth_r + $earninssol_r + $earninsada_r + $earninslrc_r + $earninsamp_r + $earninsskl_r + $earninsgrt_r + $earninsmln_r).round(2)
-      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r + $amountamp_r + $amountskl_r + $earninsgrt_r + $earninsmln_r).round(2)
+      $totalvalue  = ($amountbtc_r + $amountbch_r + $amountltc_r + $amountdoge_r + $amountxlm_r + $amountbat_r + $amounteth_r + $amountsol_r + $amountada_r + $amountlrc_r + $amountamp_r + $amountskl_r + $amountgrt_r + $amountmln_r).round(2)
       $totalspent = ($spentbtc + $spentbch + $spentltc + $spentdoge + $spentxlm + $spentbat + $spenteth + $spentsol + $spentada + $spentlrc + $spentamp + $spentskl + $spentgrt + $spentmln)
 
       $precentage = ((($totalvalue - $totalspent) / $totalspent) * 100)
@@ -888,7 +888,7 @@ else
   print "Total Spent: "
   puts "#{moneysymbol}#{$totalspent.round(2)}"
   print "Total Value: "
-  puts "#{moneysymbol}#{$totalvalue.to_s}".colorize(:black).on_green.underline
+  puts "#{moneysymbol}#{$totalvalue.to_s}".colorize(:white).on_red.underline
   print "Precentage loss: "
   puts "#{$precentage}%"
 end
