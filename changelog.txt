@@ -1,19 +1,15 @@
-Welcome to Version 17.3.5.2.1 (HOTFIX)!
+Welcome to Version 17.4
 
 new in this version is compared to last version: 
 
-1. Removed Crypto Color coding to allow for more coins
-2. Added Seperators between sections
-3. Fixed minor formatting issue cause by missing : 
-4. (HOTFIX) after-effects tweaks and cwd-updater tweaks
-5. (HOTFIX2) fixed a math error in total value
-6. (minor HITFIX3) added code to after-effects to fix gem dir permissions on ubuntu based systems
+1. Added code to after-effects to fix gem dir permissions on ubuntu based systems
+2. Added support for ETH2
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
 thats all.
 
-#WWG1WGA #MAGA #1776 #IStandWithRussia
+#WWG1WGA #MAGA #1776 
 
 Take Care,
  - Connor
