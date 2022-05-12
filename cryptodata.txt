@@ -58,3 +58,7 @@
 0.0
 ####Type amount of money spent on ETH2 below this line####
 0.0
+####Type amount of SHIB owned below this line####
+0.0
+####Type amount of money spent on SHIB below this line####
+0.0
