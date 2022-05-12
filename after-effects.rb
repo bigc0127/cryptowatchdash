@@ -58,6 +58,15 @@ $cryptopricedata[12] = "#{$pricegrt_f}"
 $cryptopricedata[13] = "#{$pricemln_f}"
 $serialized_array = Marshal.dump($cryptopricedata)
 $loading = 1
+modcheck = %x[stat --format '%a' /var/lib/gems/]
+if modcheck.to_i != 777
+  system "clear"
+  print "permissions for gemfiles not correct... fixing..."
+  system "sudo chmod -R 777 /var/lib/gems"
+  sleep 3
+  system "clear"
+else
+end
 system "gem install csv"
 system "gem install ruby-notify-send"
 system "gem install colorize"
