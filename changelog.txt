@@ -5,6 +5,7 @@ new in this version is compared to last version:
 1. Added code to after-effects to fix gem dir permissions on ubuntu based systems
 2. Added support for ETH2
 3. Added support for SHIB
+4. Added ability to save answers to startup questions
 4. (HOTFIX) fixed ETH2 not displaying correctly 
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
