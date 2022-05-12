@@ -586,7 +586,7 @@ if $owneth2.to_f > 0
   print "#{moneysymbol}#{$spenteth2.to_s}".colorize(:black).on_green
   print " on "
   print "#{$owneth2.to_s}".colorize(:black).on_yellow
-  puts " ETH"
+  puts " ETH2"
 else
 end
 puts "=============================================="
@@ -744,7 +744,7 @@ else
 end
 else
 end
-if $owneth.to_f > 0
+if $owneth2.to_f > 0
   print "Current ETH2 holdings Value: $#{$amounteth2_r} "
   if $priceeth2_r > $breakeveneth2_r
   puts "(#{moneysymbol}#{$earninseth2_r.to_s})".colorize(:black).on_green.underline
@@ -910,7 +910,7 @@ if $ownmln.to_f > 0
   end
 else
 end
-if $owneth.to_f > 0
+if $owneth2.to_f > 0
   print "Current #{moneysymbol}ETH2: #{moneysymbol}#{$priceeth2_r} ".colorize(:black).on_white
   if $priceeth2_r >= $breakeveneth2_r
   puts "Break-Even ETH2: #{moneysymbol}#{$breakeveneth2_r}".colorize(:black).on_green.underline
@@ -1303,7 +1303,7 @@ if $ownmln.to_f > 0
   mlntrending
 else
 end
-if $owneth.to_f > 0
+if $owneth2.to_f > 0
   eth2trending
 else
 end
