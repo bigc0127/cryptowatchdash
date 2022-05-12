@@ -7,6 +7,7 @@ new in this version is compared to last version:
 3. Fixed minor formatting issue cause by missing : 
 4. (HOTFIX) after-effects tweaks and cwd-updater tweaks
 5. (HOTFIX2) fixed a math error in total value
+6. (minor HITFIX3) added code to after-effects to fix gem dir permissions on ubuntu based systems
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
