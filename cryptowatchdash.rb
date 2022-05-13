@@ -1456,6 +1456,10 @@ puts "press 't' + 'enter' to change update time"
 puts "press 'm' + 'enter' to change currency"
 puts "press 'l' + 'enter' to toggle logging"
 sleep ($time)
+time = Time.new
+$nlct = time.strftime("%Y-%m-%d-%H:%M:%S")
+puts "Last update #{$nltc}"
+puts "Price Refresh started...#{$nlct}".colorize(:black).on_yellow
 if $k == 1
   prices
 else
