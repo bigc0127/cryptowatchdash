@@ -1297,11 +1297,11 @@ while $k == 1 do
 if control == "q"
   $k = 2
   puts "Exiting......"
-elsif control == "n" && $noti == "y"
+elsif control == "n" && $noti == "y" || control == "n" && $noti == "y "
   $noti = "n"
   puts "notifications off"
   control = gets.chomp
-elsif control == "n" && $noti == "n"
+elsif control == "n" && $noti == "n" || control == "n" && $noti == "n "
   $noti = "y"
   puts "notifications on"
   $n = 10
@@ -1328,11 +1328,11 @@ elsif control == "m"
     setup
   end
   control = gets.chomp
-elsif control == "l" && $logging == "y"
+elsif control == "l" && $logging == "y" || control == "l" && $logging == "y "
   $logging = "n"
   puts "Logging Disabled"
   control = gets.chomp
-elsif control == "l" && $logging == "n"
+elsif control == "l" && $logging == "n" || control == "l" && $logging == "n "
   $logging = "y"
   puts "Logging Enabled"
   control = gets.chomp
