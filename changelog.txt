@@ -1,4 +1,4 @@
-Welcome to Version 17.4.2 (HOTFIX)
+Welcome to Version 17.4.3 (HOTFIX)
 
 new in this version is compared to last version: 
 
@@ -6,7 +6,9 @@ new in this version is compared to last version:
 2. Added support for ETH2
 3. Added support for SHIB
 4. Added ability to save answers to startup questions
-4. (HOTFIX) fixed ETH2 not displaying correctly 
+5. Added notification for when price refresh starts
+6. (HOTFIX) fixed ETH2 not displaying correctly
+7. (HOTFIX) fixed saved options breaking everything
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
