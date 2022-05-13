@@ -1244,6 +1244,7 @@ if saved.to_s == "true"
   loggingraw = prefs_data[5]
   $noti = notiraw.to_s
   $currency = currencyraw.to_i
+  $sourcecur = currencyraw.to_i
   $logging = loggingraw.to_s
 else
   $noti = "z"
