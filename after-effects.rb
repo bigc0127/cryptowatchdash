@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 system "clear"
+system "sudo whoami >> /dev/null"
 $loading = 0
 Thread.new {until $loading == 1 do
   print "Updating Crypto Price Database"
