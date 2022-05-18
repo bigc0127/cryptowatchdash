@@ -1474,7 +1474,6 @@ while $k == 1 do
   display
   time = Time.new
   $nlct = time.strftime("%Y-%m-%d-%H:%M:%S")
-  puts "Last update #{$nltc}"
   puts "Price Refresh started...#{$nlct}".colorize(:black).on_yellow
   currency
   system "clear"
