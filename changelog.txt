@@ -4,7 +4,8 @@ new in this version:
 
 1. Complete Code Re-write
 2. New Layout
-3. to many changes to list them all out!..... enjoy
+3. Added support for Polkadot
+4. To many changes to list them all out!..... enjoy
 
 !!!!!!!IMPORTANT!!!!!!!
 YOU WILL NEED COINBASE API KEYS!!! 
