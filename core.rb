@@ -95,6 +95,14 @@ $currency_code = 'RUB'
   end
 end
 end
+if File.exist?('keys.txt')
+else
+  system "clear"
+  puts "==========ERROR==========".colorize(:white).on_red.underline.blink
+  puts "please go to coinbase.com and generate your API keys to run this program"
+  puts "exiting program..."
+  system "killall ruby"
+end
 end
 #Creating Class for crypto prcies
 #coin is coin type
