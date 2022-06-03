@@ -6,6 +6,12 @@ new in this version:
 2. New Layout
 3. to many changes to list them all out!..... enjoy
 
+!!!!!!!IMPORTANT!!!!!!!
+YOU WILL NEED COINBASE API KEYS!!! 
+
+please go to coinbase.com create api keys and store them in a file called "keys.txt"!
+top line should be key 2nd line should be secret!
+
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
 thats all.
