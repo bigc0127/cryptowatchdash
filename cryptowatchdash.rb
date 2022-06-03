@@ -37,7 +37,7 @@ until k == 2 do
   if $run > 0
   $bitcoin.trending
 else end
-  puts "timestamp:#{$btct}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$btct}\n".colorize(:black).on_light_cyan
 else end
 
   if $bitcoincash.owns.to_f > 0
@@ -54,7 +54,7 @@ else end
   if $run > 0
   $bitcoincash.trending
 else end
-  puts "timestamp:#{$bcht}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$bcht}\n".colorize(:black).on_light_cyan
 else end
 
 if $litecoin.owns.to_f > 0
@@ -71,7 +71,7 @@ if $litecoin.owns.to_f > 0
   if $run > 0
   $litecoin.trending
 else end
-  puts "timestamp:#{$ltct}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$ltct}\n".colorize(:black).on_light_cyan
 else end
 
 if $dogecoin.owns.to_f > 0
@@ -88,7 +88,7 @@ if $dogecoin.owns.to_f > 0
   if $run > 0
   $dogecoin.trending
 else end
-  puts "timestamp:#{$doget}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$doget}\n".colorize(:black).on_light_cyan
 else end
 
 
@@ -106,7 +106,7 @@ if $stellarlumans.owns.to_f > 0
   if $run > 0
   $stellarlumans.trending
 else end
-  puts "timestamp:#{$xlmt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$xlmt}\n".colorize(:black).on_light_cyan
 else end
 
 if $basicattentiontoken.owns.to_f > 0
@@ -123,7 +123,7 @@ if $basicattentiontoken.owns.to_f > 0
   if $run > 0
   $basicattentiontoken.trending
 else end
-  puts "timestamp:#{$batt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$batt}\n".colorize(:black).on_light_cyan
 else end
 
 if $ethereum.owns.to_f > 0
@@ -140,7 +140,7 @@ if $ethereum.owns.to_f > 0
   if $run > 0
   $ethereum.trending
 else end
-  puts "timestamp:#{$etht}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$etht}\n".colorize(:black).on_light_cyan
 else end
 
 if $solana.owns.to_f > 0
@@ -157,7 +157,7 @@ if $solana.owns.to_f > 0
   if $run > 0
   $solana.trending
 else end
-  puts "timestamp:#{$solt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$solt}\n".colorize(:black).on_light_cyan
 else end
 
 if $cardano.owns.to_f > 0
@@ -174,7 +174,7 @@ if $cardano.owns.to_f > 0
   if $run > 0
   $cardano.trending
 else end
-  puts "timestamp:#{$adat}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$adat}\n".colorize(:black).on_light_cyan
 else end
 
 if $loopring.owns.to_f > 0
@@ -192,7 +192,7 @@ if $loopring.owns.to_f > 0
   $loopring.trending
   else
   end
-  puts "timestamp:#{$lrct}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$lrct}\n".colorize(:black).on_light_cyan
 else end
 
 if $amp.owns.to_f > 0
@@ -209,7 +209,7 @@ if $amp.owns.to_f > 0
   if $run > 0
   $amp.trending
 else end
-  puts "timestamp:#{$ampt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$ampt}\n".colorize(:black).on_light_cyan
 else end
 
 if $skale.owns.to_f > 0
@@ -226,7 +226,7 @@ if $skale.owns.to_f > 0
   if $run > 0
   $skale.trending
 else end
-  puts "timestamp:#{$sklt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$sklt}\n".colorize(:black).on_light_cyan
 else end
 
 if $thegraph.owns.to_f > 0
@@ -243,7 +243,7 @@ if $thegraph.owns.to_f > 0
   if $run > 0
   $thegraph.trending
 else end
-  puts "timestamp:#{$grtt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$grtt}\n".colorize(:black).on_light_cyan
 else end
 
 if $enzyme.owns.to_f > 0
@@ -260,7 +260,7 @@ if $enzyme.owns.to_f > 0
   if $run > 0
   $enzyme.trending
 else end
-  puts "timestamp:#{$mlnt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$mlnt}\n".colorize(:black).on_light_cyan
 else end
 
 if $ethereum2.owns.to_f > 0
@@ -277,7 +277,7 @@ if $ethereum2.owns.to_f > 0
   if $run > 0
   $ethereum2.trending
 else end
-  puts "timestamp:#{$eth2t}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$eth2t}\n".colorize(:black).on_light_cyan
 else end
 
 if $shibainu.owns.to_f > 0
@@ -294,7 +294,7 @@ if $shibainu.owns.to_f > 0
   if $run > 0
   $shibainu.trending
 else end
-  puts "timestamp:#{$shibt}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$shibt}\n".colorize(:black).on_light_cyan
 else end
 
 if $polkadot.owns.to_f > 0
@@ -311,12 +311,12 @@ if $polkadot.owns.to_f > 0
   if $run > 0
   $polkadot.trending
 else end
-  puts "timestamp:#{$dott}".colorize(:black).on_light_cyan
+  puts "timestamp:#{$dott}\n".colorize(:black).on_light_cyan
 else end
 $run += 1
   sleep 10
   time = Time.new
   nlct = time.strftime("%Y-%m-%d-%H:%M:%S")
-  puts "Price Refresh started: #{nlct}".colorize(:black).on_yellow
+  puts "Price Refresh started: #{nlct}\n".colorize(:black).on_yellow
   coref.prices
 end
