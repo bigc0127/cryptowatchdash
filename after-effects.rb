@@ -18,7 +18,7 @@ system "gem install colorize"
 system "sudo gem install coinbase"
 system "clear"
 if File.exist?('prefs.txt')
-  system "prefs.txt"
+  system "rm ./prefs.txt"
 else end
 
 system "cat ./changelog.txt"
