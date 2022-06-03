@@ -62,3 +62,7 @@
 0.0
 ####Type amount of money spent on SHIB below this line####
 0.0
+####Type amount of DOT owned below this line####
+0.0
+####Type amount of money spent of DOT below this line####
+0.0
