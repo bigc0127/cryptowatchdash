@@ -1,12 +1,10 @@
-Welcome to Version 17.5.1 (HOTFIX)
+Welcome to Version 18.0
 
 new in this version: 
 
 1. Complete Code Re-write
 2. New Layout
 3. to many changes to list them all out!..... enjoy
-4. HOTFIX
-
 
 IF YOU ARE COMMING FROM A VERSION OLDER THAN 16.5 RUN THE UPDATER AGAIN
 
